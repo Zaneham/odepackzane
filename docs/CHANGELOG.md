@@ -36,6 +36,11 @@ checked ...
   - DLSODA automatic stiff/non-stiff method switching
   - Tolerance handling (tight vs loose comparison)
   - Reference: UCRL-ID-113855, pp. 53-55, 88-91, 101-105
+- Added numerical regression test suite (test_regression.f90) to detect drift:
+  - Exponential decay with analytical golden reference
+  - Robertson chemical kinetics (canonical stiff problem)
+  - Harmonic oscillator (periodic drift detection)
+  - References: Goldberg (1991) ACM Comp. Surveys, Oberkampf & Roy (2010) Cambridge
 
 ### :orange_circle: DIFF:
 - Developer notes reorganised into "DONE" and "REMAINING WORK" sections
@@ -43,7 +48,7 @@ checked ...
 ### :memo: NOTES:
 - dcopy replacement was already complete (found commented with !X! markers)
 - JROOT initialisation was already fixed in lsodkr.f90 example
-- All 8 tests pass after changes (7 original + test_methods)
+- All 9 tests pass (7 original + test_methods + test_regression)
 - Type mismatch files remain outside module (documented, intentional design)
 
 ### :book: REFERENCES:
@@ -55,7 +60,11 @@ checked ...
    LSODE, the Livermore Solver for Ordinary Differential Equations."
    LLNL Report UCRL-ID-113855, December 1993. Pages 53-55 (Method Flags), 88-91 (Error Control), 101-105 (MF values).
 
-3. NIST (1985). "FIPS PUB 69-1: Federal Information Processing Standards
+3. Goldberg, D. (1991). "What every computer scientist should know about
+   floating-point arithmetic." ACM Computing Surveys, 23(1), 5-48.
+   https://doi.org/10.1145/103162.103163
+
+4. NIST (1985). "FIPS PUB 69-1: Federal Information Processing Standards
    Publication - FORTRAN." National Institute of Standards and Technology.
 
 ---
