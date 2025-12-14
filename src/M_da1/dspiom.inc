@@ -162,7 +162,8 @@ external psol
    do i = 1 , N
       V(i,1) = B(i)*Wght(i)
    enddo
-   bnrm0 = dnrm2(N,V,1)
+   !X!bnrm0 = dnrm2(N,V,1)
+   bnrm0 = norm2(V(1:N,1))  ! Ref: opkd-sum.txt lines 229-237, Fortran 2008 intrinsic
    bnrm = bnrm0
    IFDELTA: if ( bnrm0>Delta ) then
       !  Apply inverse of left preconditioner to vector b. --------------------
@@ -180,7 +181,8 @@ external psol
          do i = 1 , N
             V(i,1) = B(i)*Wght(i)
          enddo
-         bnrm = dnrm2(N,V,1)
+         !X!bnrm = dnrm2(N,V,1)
+         bnrm = norm2(V(1:N,1))  ! Ref: opkd-sum.txt lines 229-237, Fortran 2008 intrinsic
          Delta = Delta*(bnrm/bnrm0)
       endif
       tem = 1.0D0/bnrm

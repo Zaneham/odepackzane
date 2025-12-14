@@ -1,17 +1,20 @@
 module M_odepack
 !
-! dcopy can be replaced with array syntax
+! MODERNISATION NOTES (see opkd-sum.txt lines 229-237 for BLAS replacements):
+! [DONE] dcopy replaced with array syntax (Fortran 90)
+! [DONE] dnrm2 replaced with intrinsic norm2() (Fortran 2008)
+! [DONE] GOTOs eliminated in active code (archive/ preserves original)
+! [DONE] JROOT initialisation added to lsodkr.f90 example
+!
+! REMAINING WORK:
 ! SPAG removes save attribute and type from f90 function declaration
 ! SPAG removes external attribute
 ! determine what can be private and public
 ! many equality tests for real values; could replace
 ! simplify checkpoint capability, maybe TRANSFER()
 ! look for SAVEs that should be parameters
-! remaining GOTOs
-! replace dnrm2 with intrinsic norm2(3f) ?
 ! in production probably would make matrix routines separate so could use alternate library of BLAS matrix procedures
 ! same arrays passed on single call all over the place
-! NOTE: DLSODKR did not initialize JROOT and neither did lsodkr.f90 example
 !
 implicit none
 integer,parameter :: dp=kind(0.0d0)

@@ -75,7 +75,8 @@ real(kind=dp) :: arg, sumdsq, tem, vnrm
 integer       :: i, i0
 
    !  Get norm of unaltered VNEW for later use. ----------------------------
-   vnrm = dnrm2(N,Vnew,1)
+   !X!vnrm = dnrm2(N,Vnew,1)
+   vnrm = norm2(Vnew(1:N))  ! Ref: opkd-sum.txt lines 229-237, Fortran 2008 intrinsic
    !-----------------------------------------------------------------------
    !  Do modified Gram-Schmidt on VNEW = A*v(LL).
    !  Scaled inner products give new column of HES.
@@ -94,7 +95,8 @@ integer       :: i, i0
    !  Correct if relative correction exceeds 1000*(unit roundoff).
    !  finally, correct SNORMW using the dot products involved.
    !-----------------------------------------------------------------------
-   Snormw = dnrm2(N,Vnew,1)
+   !X!Snormw = dnrm2(N,Vnew,1)
+   Snormw = norm2(Vnew(1:N))  ! Ref: opkd-sum.txt lines 229-237, Fortran 2008 intrinsic
    if ( vnrm+0.001D0*Snormw/=vnrm ) return
    sumdsq = 0.0D0
    do i = i0 , Ll

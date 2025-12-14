@@ -120,7 +120,8 @@ integer :: i
          Z(i) = Vtem(i)*Wght(i)
       enddo
 
-      tempn = dnrm2(dls1%n,Z,1)
+      !X!tempn = dnrm2(dls1%n,Z,1)
+      tempn = norm2(Z(1:dls1%n))  ! Ref: opkd-sum.txt lines 229-237, Fortran 2008 intrinsic
       rnorm = 1.0D0/tempn
 
       !  Save Y in Z and increment Y by VTEM/norm.
