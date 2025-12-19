@@ -23,10 +23,10 @@ jobs:
         fpm --version
 
     - name: Compile (ARM64)
-      run: fpm build --compiler gfortran-14 --profile release --flag "-std=legacy -fallow-argument-mismatch"
+      run: fpm build --compiler gfortran-14 --profile release --flag "-std=legacy -fallow-argument-mismatch -Wno-implicit-interface"
 
     - name: Test (ARM64)
-      run: fpm test --compiler gfortran-14 --profile release --flag "-std=legacy -fallow-argument-mismatch"
+      run: fpm test --compiler gfortran-14 --profile release --flag "-std=legacy -fallow-argument-mismatch -Wno-implicit-interface"
 
   # RISC-V Testing via QEMU emulation
   Build-RISCV:
@@ -50,10 +50,10 @@ jobs:
         fpm --version
 
     - name: Compile (RISC-V 64-bit)
-      run: fpm build --compiler riscv64-linux-gnu-gfortran --profile release --flag "-std=legacy -fallow-argument-mismatch -static"
+      run: fpm build --compiler riscv64-linux-gnu-gfortran --profile release --flag "-std=legacy -fallow-argument-mismatch -Wno-implicit-interface -static"
 
     - name: Test (RISC-V via QEMU)
-      run: fpm test --compiler riscv64-linux-gnu-gfortran --profile release --flag "-std=legacy -fallow-argument-mismatch -static" --runner "qemu-riscv64-static"
+      run: fpm test --compiler riscv64-linux-gnu-gfortran --profile release --flag "-std=legacy -fallow-argument-mismatch -Wno-implicit-interface -static" --runner "qemu-riscv64-static"
 
   # x86_64 Linux build with documentation
   Build:
@@ -99,10 +99,10 @@ jobs:
         sudo apt-get install -y gfortran-${GCC_V}
 
     - name: Compile
-      run: fpm build --compiler gfortran-${GCC_V} --profile release --flag "-std=legacy -fallow-argument-mismatch"
+      run: fpm build --compiler gfortran-${GCC_V} --profile release --flag "-std=legacy -fallow-argument-mismatch -Wno-implicit-interface"
 
     - name: Test
-      run: fpm test --compiler gfortran-${GCC_V} --profile release --flag "-std=legacy -fallow-argument-mismatch"
+      run: fpm test --compiler gfortran-${GCC_V} --profile release --flag "-std=legacy -fallow-argument-mismatch -Wno-implicit-interface"
 
     - name: Build documentation
       run: ford ./ford.md
