@@ -2,13 +2,39 @@ name: CI
 on: [push, pull_request]
 jobs:
 
+  # ARM Testing - Apple Silicon (M1/M2/M3)
+  Build-ARM:
+    runs-on: macos-14
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Install GFortran via Homebrew
+      run: |
+        brew install gfortran
+        gfortran --version
+
+    - name: Setup Fortran Package Manager
+      uses: fortran-lang/setup-fpm@v5
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Compile (ARM64)
+      run: fpm build --compiler gfortran --profile release --flag "-std=legacy -fallow-argument-mismatch"
+
+    - name: Test (ARM64)
+      run: fpm test --compiler gfortran --profile release --flag "-std=legacy -fallow-argument-mismatch"
+
+  # x86_64 Linux build with documentation
   Build:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        gcc_v: [10] # Version of GFortran we want to use.
+        gcc_v: [10]
         python-version: [3.9]
     env:
       FC: gfortran-${{ matrix.gcc_v }}
@@ -21,17 +47,13 @@ jobs:
         submodules: recursive
 
     - name: Install Python
-      uses: actions/setup-python@v1 # Use pip to install latest CMake, & FORD/Jin2For, etc.
+      uses: actions/setup-python@v1
       with:
         python-version: ${{ matrix.python-version }}
 
     - name: Setup Graphviz
       uses: ts-graphviz/setup-graphviz@v1
 
-#    - name: Setup Fortran Package Manager
-#      uses: fortran-lang/setup-fpm@v3
-#      with:
-#        github-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Setup Fortran Package Manager
       run: |
         wget https://github.com/fortran-lang/fpm/releases/download/v0.6.0/fpm-0.6.0-linux-x86_64
@@ -74,5 +96,32 @@ jobs:
       if: github.ref == 'refs/heads/master'
       uses: JamesIves/github-pages-deploy-action@4.1.0
       with:
-        branch: gh-pages # The branch the action should deploy to.
-        folder: docs/fpm-ford  # The folder the action should deploy.
+        branch: gh-pages
+        folder: docs/fpm-ford
+
+  # RISC-V Testing via QEMU emulation
+  Build-RISCV:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Install QEMU and RISC-V toolchain
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y qemu-user qemu-user-static gcc-riscv64-linux-gnu gfortran-riscv64-linux-gnu
+
+    - name: Setup Fortran Package Manager
+      uses: fortran-lang/setup-fpm@v5
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Compile (RISC-V 64-bit)
+      run: |
+        fpm build --compiler riscv64-linux-gnu-gfortran --profile release --flag "-std=legacy -fallow-argument-mismatch -static"
+
+    - name: Test (RISC-V via QEMU)
+      run: |
+        fpm test --compiler riscv64-linux-gnu-gfortran --profile release --flag "-std=legacy -fallow-argument-mismatch -static" --runner "qemu-riscv64-static"
