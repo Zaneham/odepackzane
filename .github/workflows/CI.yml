@@ -14,7 +14,8 @@ jobs:
     - name: Install GFortran via Homebrew
       run: |
         brew install gcc
-        gfortran-14 --version
+        echo "FC=$(brew --prefix)/bin/gfortran-14" >> $GITHUB_ENV
+        $(brew --prefix)/bin/gfortran-14 --version
 
     - name: Setup Fortran Package Manager
       run: |
@@ -22,10 +23,10 @@ jobs:
         fpm --version
 
     - name: Compile (ARM64)
-      run: fpm build --compiler gfortran-14
+      run: fpm build --compiler $(brew --prefix)/bin/gfortran-14
 
     - name: Test (ARM64)
-      run: fpm test --compiler gfortran-14
+      run: fpm test --compiler $(brew --prefix)/bin/gfortran-14
 
   # RISC-V Testing via QEMU emulation
   Build-RISCV:
