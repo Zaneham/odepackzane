@@ -1,0 +1,827 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="ODEPACK - A Systematized Collection of ODE Solvers">
+    <meta name="author" content="Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>md &ndash; odepack</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+      <link href="../css/user.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">odepack </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>md
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">40 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/md.inc"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/md.inc.html'>md.inc</a></li>
+            <li class="breadcrumb-item active" aria-current="page">md</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../proc/md~2.html#variable-dmin~2">dmin</a>
+            <a class="list-group-item" href="../proc/md~2.html#variable-ek~2">ek</a>
+            <a class="list-group-item" href="../proc/md~2.html#variable-k~53">k</a>
+            <a class="list-group-item" href="../proc/md~2.html#variable-tag~8">tag</a>
+            <a class="list-group-item" href="../proc/md~2.html#variable-tail~2">tail</a>
+            <a class="list-group-item" href="../proc/md~2.html#variable-vk~2">vk</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/md~2.html#src">md</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2> subroutine md(N, Ia, Ja, Max, V, L, Head, Last, Next, Mark, Flag)  
+</h2>
+    
+
+    <p>md &ndash; minimum degree algorithm (based on element model)</p>
+<h3 id="description">description</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">md</span><span class="w"> </span><span class="nv">finds</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">minimum</span><span class="w"> </span><span class="nv">degree</span><span class="w"> </span><span class="nv">ordering</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">rows</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">columns</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">a</span>
+<span class="nv">general</span><span class="w"> </span><span class="nv">sparse</span><span class="w"> </span><span class="nv">matrix</span><span class="w"> </span><span class="nv">m</span><span class="w"> </span><span class="nv">stored</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="ss">(</span><span class="nv">ia</span>,<span class="nv">ja</span>,<span class="nv">a</span><span class="ss">)</span><span class="w"> </span><span class="nv">format</span>.
+<span class="nv">when</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">structure</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">m</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">nonsymmetric</span>,<span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">ordering</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">that</span>
+<span class="nv">obtained</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">symmetric</span><span class="w"> </span><span class="nv">matrix</span><span class="w">  </span><span class="nv">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">m</span><span class="o">-</span><span class="nv">transpose</span>.
+</code></pre></div>
+
+<h3 id="additional-parameters">additional parameters</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">MAX</span>
+
+<span class="o">:</span><span class="w"> </span><span class="n">declared</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">one</span><span class="o">-</span><span class="n">dimensional</span><span class="w"> </span><span class="n">arrays</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">l</span><span class="o">.</span>
+<span class="n">max</span><span class="w"> </span><span class="n">must</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">least</span><span class="w">  </span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="n">k</span><span class="o">,</span><span class="w">  </span><span class="n">where</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span>
+<span class="n">nonzeroes</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">strict</span><span class="w"> </span><span class="n">upper</span><span class="w"> </span><span class="n">triangle</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m</span><span class="o">-</span><span class="n">transpose</span>
+
+<span class="n">V</span>
+
+<span class="o">:</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">one</span><span class="o">-</span><span class="n">dimensional</span><span class="w"> </span><span class="n">work</span><span class="w"> </span><span class="n">array</span><span class="o">.</span><span class="w">  </span><span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span>
+
+<span class="n">L</span>
+
+<span class="o">:</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">one</span><span class="o">-</span><span class="n">dimensional</span><span class="w"> </span><span class="n">work</span><span class="w"> </span><span class="n">array</span><span class="o">.</span><span class="w">  </span><span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span>
+
+<span class="n">HEAD</span>
+
+<span class="o">:</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">one</span><span class="o">-</span><span class="n">dimensional</span><span class="w"> </span><span class="n">work</span><span class="w"> </span><span class="n">array</span><span class="o">.</span><span class="w">  </span><span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span>
+
+<span class="n">LAST</span>
+
+<span class="o">:</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">one</span><span class="o">-</span><span class="n">dimensional</span><span class="w"> </span><span class="n">array</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">permutation</span>
+<span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">rows</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">columns</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">corresponding</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">minimum</span>
+<span class="n">degree</span><span class="w"> </span><span class="n">ordering</span><span class="o">.</span><span class="w">  </span><span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span>
+
+<span class="n">NEXT</span>
+
+<span class="o">:</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">one</span><span class="o">-</span><span class="n">dimensional</span><span class="w"> </span><span class="n">array</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">inverse</span><span class="w"> </span><span class="n">of</span>
+<span class="n">the</span><span class="w"> </span><span class="n">permutation</span><span class="w"> </span><span class="n">returned</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">last</span><span class="o">.</span><span class="w">  </span><span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span>
+
+<span class="n">MARK</span>
+
+<span class="o">:</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">one</span><span class="o">-</span><span class="n">dimensional</span><span class="w"> </span><span class="n">work</span><span class="w"> </span><span class="n">array</span><span class="w"> </span><span class="o">(</span><span class="n">may</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v</span><span class="o">).</span>
+<span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span>
+
+<span class="n">FLAG</span>
+
+<span class="o">:</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="n">flag</span><span class="o">.</span><span class="w">  </span><span class="n">values</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">their</span><span class="w"> </span><span class="n">meanings</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="o">-</span>
+
+<span class="w">         </span><span class="mi">0</span><span class="w">     </span><span class="n">no</span><span class="w"> </span><span class="n">errors</span><span class="w"> </span><span class="n">detected</span>
+<span class="w">         </span><span class="mi">9</span><span class="n">n</span><span class="o">+</span><span class="n">k</span><span class="w">  </span><span class="n">insufficient</span><span class="w"> </span><span class="n">storage</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">md</span>
+</code></pre></div>
+
+<h3 id="definitions-of-internal-parameters">definitions of internal parameters</h3>
+<div class="codehilite"><pre><span></span><code>    ---------+---------------------------------------------------------
+    v(s)     - value field of list entry
+    ---------+---------------------------------------------------------
+    l(s)     - link field of list entry  (0 =) end of list)
+    ---------+---------------------------------------------------------
+    l(vi)    - pointer to element list of uneliminated vertex vi
+    ---------+---------------------------------------------------------
+    l(ej)    - pointer to boundary list of active element ej
+    ---------+---------------------------------------------------------
+    head(d)  - vj =) vj head of d-list d
+             -  0 =) no vertex in d-list d
+
+
+             -                  vi uneliminated vertex
+             -          vi in ek           -       vi not in ek
+    ---------+-----------------------------+---------------------------
+    next(vi) - undefined but nonnegative   - vj =) vj next in d-list
+             -                             -  0 =) vi tail of d-list
+    ---------+-----------------------------+---------------------------
+    last(vi) - (not set until mdp)         - -d =) vi head of d-list d
+             --vk =) compute degree        - vj =) vj last in d-list
+             - ej =) vi prototype of ej    -  0 =) vi not in any d-list
+             -  0 =) do not compute degree -
+    ---------+-----------------------------+---------------------------
+    mark(vi) - mark(vk)                    - nonneg. tag .lt. mark(vk)
+
+
+             -                   vi eliminated vertex
+             -      ei active element      -           otherwise
+    ---------+-----------------------------+---------------------------
+    next(vi) - -j =) vi was j-th vertex    - -j =) vi was j-th vertex
+             -       to be eliminated      -       to be eliminated
+    ---------+-----------------------------+---------------------------
+    last(vi) -  m =) size of ei = m        - undefined
+    ---------+-----------------------------+---------------------------
+    mark(vi) - -m =) overlap count of ei   - undefined
+             -       with ek = m           -
+             - otherwise nonnegative tag   -
+             -       .lt. mark(vk)         -
+</code></pre></div>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-n~70"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>N</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ia~24"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Ia</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ja~24"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Ja</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-max~4"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Max</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-v~18"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>V</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-l~16"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>L</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-head~8"></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Head</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-last~10"></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Last</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-next~10"></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Next</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mark~10"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Mark</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flag~14"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Flag</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~md~2~~CallsGraph Pages: 1 -->
+<svg id="procmd2CallsGraph" width="152pt" height="158pt"
+ viewBox="0.00 0.00 152.00 158.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~md~2~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 154)">
+<title>proc~~md~2~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-154 148,-154 148,4 -4,4"/>
+<!-- proc~md~2 -->
+<g id="proc~~md~2~~CallsGraph_node1" class="node">
+<title>proc~md~2</title>
+<polygon fill="none" stroke="black" points="54,-87 0,-87 0,-63 54,-63 54,-87"/>
+<text text-anchor="middle" x="27" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">md</text>
+</g>
+<!-- mdi -->
+<g id="proc~~md~2~~CallsGraph_node2" class="node">
+<title>mdi</title>
+<polygon fill="#777777" stroke="#777777" points="144,-150 90,-150 90,-126 144,-126 144,-150"/>
+<text text-anchor="middle" x="117" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mdi</text>
+</g>
+<!-- proc~md~2&#45;&gt;mdi -->
+<g id="proc~~md~2~~CallsGraph_edge1" class="edge">
+<title>proc~md~2&#45;&gt;mdi</title>
+<path fill="none" stroke="#000000" d="M44.97,-87.15C57.99,-96.47 76.18,-109.49 90.89,-120.02"/>
+<polygon fill="#000000" stroke="#000000" points="88.92,-122.91 99.08,-125.89 92.99,-117.22 88.92,-122.91"/>
+</g>
+<!-- mdm -->
+<g id="proc~~md~2~~CallsGraph_node3" class="node">
+<title>mdm</title>
+<polygon fill="#777777" stroke="#777777" points="144,-108 90,-108 90,-84 144,-84 144,-108"/>
+<text text-anchor="middle" x="117" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mdm</text>
+</g>
+<!-- proc~md~2&#45;&gt;mdm -->
+<g id="proc~~md~2~~CallsGraph_edge2" class="edge">
+<title>proc~md~2&#45;&gt;mdm</title>
+<path fill="none" stroke="#000000" d="M54.4,-81.3C62.48,-83.23 71.51,-85.38 80.1,-87.43"/>
+<polygon fill="#000000" stroke="#000000" points="79.38,-90.86 89.92,-89.78 81,-84.05 79.38,-90.86"/>
+</g>
+<!-- mdp -->
+<g id="proc~~md~2~~CallsGraph_node4" class="node">
+<title>mdp</title>
+<polygon fill="#777777" stroke="#777777" points="144,-66 90,-66 90,-42 144,-42 144,-66"/>
+<text text-anchor="middle" x="117" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mdp</text>
+</g>
+<!-- proc~md~2&#45;&gt;mdp -->
+<g id="proc~~md~2~~CallsGraph_edge3" class="edge">
+<title>proc~md~2&#45;&gt;mdp</title>
+<path fill="none" stroke="#000000" d="M54.4,-68.7C62.48,-66.77 71.51,-64.62 80.1,-62.57"/>
+<polygon fill="#000000" stroke="#000000" points="81,-65.95 89.92,-60.22 79.38,-59.14 81,-65.95"/>
+</g>
+<!-- mdu -->
+<g id="proc~~md~2~~CallsGraph_node5" class="node">
+<title>mdu</title>
+<polygon fill="#777777" stroke="#777777" points="144,-24 90,-24 90,0 144,0 144,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mdu</text>
+</g>
+<!-- proc~md~2&#45;&gt;mdu -->
+<g id="proc~~md~2~~CallsGraph_edge4" class="edge">
+<title>proc~md~2&#45;&gt;mdu</title>
+<path fill="none" stroke="#000000" d="M44.97,-62.85C57.99,-53.53 76.18,-40.51 90.89,-29.98"/>
+<polygon fill="#000000" stroke="#000000" points="92.99,-32.78 99.08,-24.11 88.92,-27.09 92.99,-32.78"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    <section>    
+      <h2>Variables</h2>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dmin~2"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dmin</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ek~2"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ek</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-k~53"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>k</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tag~8"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tag</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tail~2"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tail</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-vk~2"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>vk</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    </section>
+    <br>
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="k">subroutine </span><span class="n">md</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">Ia</span><span class="p">,</span><span class="n">Ja</span><span class="p">,</span><span class="nb">Max</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">Head</span><span class="p">,</span><span class="n">Last</span><span class="p">,</span><span class="n">Next</span><span class="p">,</span><span class="n">Mark</span><span class="p">,</span><span class="n">Flag</span><span class="p">)</span>
+
+<span class="kt">integer</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">N</span>
+<span class="kt">integer</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">Ia</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">integer</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">Ja</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">integer</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="nb">Max</span>
+<span class="kt">integer</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">V</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">integer</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">L</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Head</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Last</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Next</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">integer</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">Mark</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">integer</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">Flag</span>
+
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="nb">dmin</span><span class="p">,</span><span class="w"> </span><span class="n">ek</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">tag</span><span class="p">,</span><span class="w"> </span><span class="n">tail</span><span class="p">,</span><span class="w"> </span><span class="n">vk</span>
+
+<span class="k">equivalence</span><span class="w"> </span><span class="p">(</span><span class="n">vk</span><span class="p">,</span><span class="n">ek</span><span class="p">)</span>
+
+<span class="w">   </span><span class="c">!----initialization</span>
+<span class="w">   </span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">   </span><span class="k">call </span><span class="n">mdi</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">Ia</span><span class="p">,</span><span class="n">Ja</span><span class="p">,</span><span class="nb">Max</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">Head</span><span class="p">,</span><span class="n">Last</span><span class="p">,</span><span class="n">Next</span><span class="p">,</span><span class="n">Mark</span><span class="p">,</span><span class="n">tag</span><span class="p">,</span><span class="n">Flag</span><span class="p">)</span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">Flag</span><span class="o">/=</span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
+<span class="w">   </span><span class="c">!</span>
+<span class="w">   </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">   </span><span class="nb">dmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">   </span><span class="c">!</span>
+<span class="w">   </span><span class="c">!----while  k .lt. n  do</span>
+<span class="w">   </span><span class="k">do while</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">k</span><span class="o">&lt;</span><span class="n">N</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="c">!</span>
+<span class="w">   </span><span class="c">!------search for vertex of minimum degree</span>
+<span class="w">      </span><span class="k">do while</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">Head</span><span class="p">(</span><span class="nb">dmin</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">0</span><span class="w"> </span><span class="p">)</span>
+<span class="w">         </span><span class="nb">dmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dmin</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="k">enddo</span>
+<span class="w">   </span><span class="c">!</span>
+<span class="w">   </span><span class="c">!------remove vertex vk of minimum degree from degree list</span>
+<span class="w">      </span><span class="n">vk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Head</span><span class="p">(</span><span class="nb">dmin</span><span class="p">)</span>
+<span class="w">      </span><span class="n">Head</span><span class="p">(</span><span class="nb">dmin</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Next</span><span class="p">(</span><span class="n">vk</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">Head</span><span class="p">(</span><span class="nb">dmin</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">Last</span><span class="p">(</span><span class="n">Head</span><span class="p">(</span><span class="nb">dmin</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="nb">dmin</span>
+<span class="w">   </span><span class="c">!</span>
+<span class="w">   </span><span class="c">!------number vertex vk, adjust tag, and tag vk</span>
+<span class="w">      </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="n">Next</span><span class="p">(</span><span class="n">vk</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">k</span>
+<span class="w">      </span><span class="n">Last</span><span class="p">(</span><span class="n">ek</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dmin</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tag</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Last</span><span class="p">(</span><span class="n">ek</span><span class="p">)</span>
+<span class="w">      </span><span class="n">Mark</span><span class="p">(</span><span class="n">vk</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tag</span>
+<span class="w">   </span><span class="c">!</span>
+<span class="w">   </span><span class="c">!------form element ek from uneliminated neighbors of vk</span>
+<span class="w">      </span><span class="k">call </span><span class="n">mdm</span><span class="p">(</span><span class="n">vk</span><span class="p">,</span><span class="n">tail</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">Last</span><span class="p">,</span><span class="n">Next</span><span class="p">,</span><span class="n">Mark</span><span class="p">)</span>
+<span class="w">   </span><span class="c">!</span>
+<span class="w">   </span><span class="c">!------purge inactive elements and do mass elimination</span>
+<span class="w">      </span><span class="k">call </span><span class="n">mdp</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">ek</span><span class="p">,</span><span class="n">tail</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">Head</span><span class="p">,</span><span class="n">Last</span><span class="p">,</span><span class="n">Next</span><span class="p">,</span><span class="n">Mark</span><span class="p">)</span>
+<span class="w">   </span><span class="c">!</span>
+<span class="w">   </span><span class="c">!------update degrees of uneliminated vertices in ek</span>
+<span class="w">   </span><span class="c">!</span>
+<span class="w">      </span><span class="k">call </span><span class="n">mdu</span><span class="p">(</span><span class="n">ek</span><span class="p">,</span><span class="nb">dmin</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">Head</span><span class="p">,</span><span class="n">Last</span><span class="p">,</span><span class="n">Next</span><span class="p">,</span><span class="n">Mark</span><span class="p">)</span>
+<span class="w">   </span><span class="k">enddo</span>
+<span class="w">   </span><span class="c">!</span>
+<span class="w">   </span><span class="c">!----generate inverse permutation from permutation</span>
+<span class="w">   </span><span class="k">do </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">N</span>
+<span class="w">      </span><span class="n">Next</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">Next</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="w">      </span><span class="n">Last</span><span class="p">(</span><span class="n">Next</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span>
+<span class="w">   </span><span class="k">enddo</span>
+
+<span class="k">end subroutine </span><span class="n">md</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              odepack
+ was developed by Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams<br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2025-12-19 11:47 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,766 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="ODEPACK - A Systematized Collection of ODE Solvers">
+    <meta name="author" content="Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>nroc &ndash; odepack</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+      <link href="../css/user.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">odepack </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>nroc
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">42 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/nroc.inc"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/nroc.inc.html'>nroc.inc</a></li>
+            <li class="breadcrumb-item active" aria-current="page">nroc</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../proc/nroc~2.html#variable-i~113">i</a>
+            <a class="list-group-item" href="../proc/nroc~2.html#variable-j~58">j</a>
+            <a class="list-group-item" href="../proc/nroc~2.html#variable-jmax~15">jmax</a>
+            <a class="list-group-item" href="../proc/nroc~2.html#variable-jmin~15">jmin</a>
+            <a class="list-group-item" href="../proc/nroc~2.html#variable-k~41">k</a>
+            <a class="list-group-item" href="../proc/nroc~2.html#variable-newj~2">newj</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/nroc~2.html#src">nroc</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2> subroutine nroc(N, Ic, Ia, Ja, A, Jar, Ar, P, Flag)  
+</h2>
+    
+
+    <div class="codehilite"><pre><span></span><code><span class="w">           </span><span class="nx">yale</span><span class="w"> </span><span class="nx">sparse</span><span class="w"> </span><span class="nx">matrix</span><span class="w"> </span><span class="kn">package</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">nonsymmetric</span><span class="w"> </span><span class="nx">codes</span>
+<span class="w">                </span><span class="nx">solving</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">system</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">equations</span><span class="w"> </span><span class="nx">mx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">b</span>
+</code></pre></div>
+
+<h3 id="i-calling-sequences">i.   calling sequences</h3>
+<div class="codehilite"><pre><span></span><code><span class="w">     </span><span class="nv">the</span><span class="w"> </span><span class="nv">coefficient</span><span class="w"> </span><span class="nv">matrix</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">processed</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">an</span><span class="w"> </span><span class="nv">ordering</span><span class="w"> </span><span class="nv">routine</span>
+<span class="ss">(</span><span class="nv">e</span>.<span class="nv">g</span>.,<span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">reduce</span><span class="w"> </span><span class="nv">fillin</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="nv">ensure</span><span class="w"> </span><span class="nv">numerical</span><span class="w"> </span><span class="nv">stability</span><span class="ss">)</span><span class="w"> </span><span class="nv">before</span><span class="w"> </span><span class="nv">using</span>
+<span class="nv">the</span><span class="w"> </span><span class="nv">remaining</span><span class="w"> </span><span class="nv">subroutines</span>.<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nv">no</span><span class="w"> </span><span class="nv">reordering</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">done</span>,<span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">set</span>
+<span class="nv">r</span><span class="ss">(</span><span class="nv">i</span><span class="ss">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">c</span><span class="ss">(</span><span class="nv">i</span><span class="ss">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ic</span><span class="ss">(</span><span class="nv">i</span><span class="ss">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">i</span><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="nv">i</span><span class="o">=</span><span class="mi">1</span>,...,<span class="nv">n</span>.<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nv">an</span><span class="w"> </span><span class="nv">ordering</span><span class="w"> </span><span class="nv">subroutine</span>
+<span class="nv">is</span><span class="w"> </span><span class="nv">used</span>,<span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">nroc</span><span class="w"> </span><span class="nv">should</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">used</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">reorder</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">coefficient</span><span class="w"> </span><span class="nv">matrix</span>
+</code></pre></div>
+
+<h3 id="the-calling-sequence-is-">the calling sequence is &ndash;</h3>
+<div class="codehilite"><pre><span></span><code>        (       (matrix ordering))
+        (nroc   (matrix reordering))
+         nsfc   (symbolic factorization to determine where fillin will
+                  occur during numeric factorization)
+         nnfc   (numeric factorization into product ldu of unit lower
+                  triangular matrix l, diagonal matrix d, and unit
+                  upper triangular matrix u, and solution of linear
+                  system)
+         nnsc   (solution of linear system for additional right-hand
+                  side using ldu factorization from nnfc)
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="ss">(</span><span class="k">if</span><span class="w"> </span><span class="nv">only</span><span class="w"> </span><span class="nv">one</span><span class="w"> </span><span class="nv">system</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">equations</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">solved</span>,<span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">the</span>
+<span class="nv">subroutine</span><span class="w"> </span><span class="nv">trk</span><span class="w"> </span><span class="nv">should</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">used</span>.<span class="ss">)</span>
+</code></pre></div>
+
+<h3 id="ii-storage-of-sparse-matrices">ii.  storage of sparse matrices</h3>
+<div class="codehilite"><pre><span></span><code><span class="w">     </span><span class="nv">the</span><span class="w"> </span><span class="nv">nonzero</span><span class="w"> </span><span class="nv">entries</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">coefficient</span><span class="w"> </span><span class="nv">matrix</span><span class="w"> </span><span class="nv">m</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">stored</span>
+
+<span class="nv">row</span><span class="o">-</span><span class="nv">by</span><span class="o">-</span><span class="nv">row</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">array</span><span class="w"> </span><span class="nv">a</span>.<span class="w">  </span><span class="nv">to</span><span class="w"> </span><span class="nv">identify</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">individual</span><span class="w"> </span><span class="nv">nonzero</span>
+<span class="nv">entries</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">each</span><span class="w"> </span><span class="nv">row</span>,<span class="w"> </span><span class="nv">we</span><span class="w"> </span><span class="nv">need</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">know</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">which</span><span class="w"> </span><span class="nv">column</span><span class="w"> </span><span class="nv">each</span><span class="w"> </span><span class="nv">entry</span>
+<span class="nv">lies</span>.<span class="w">  </span><span class="nv">the</span><span class="w"> </span><span class="nv">column</span><span class="w"> </span><span class="nv">indices</span><span class="w"> </span><span class="nv">which</span><span class="w"> </span><span class="nv">correspond</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">nonzero</span><span class="w"> </span><span class="nv">entries</span>
+<span class="nv">of</span><span class="w"> </span><span class="nv">m</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">stored</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">array</span><span class="w"> </span><span class="nv">ja</span>.<span class="w">  </span><span class="nv">i</span>.<span class="nv">e</span>.,<span class="w"> </span><span class="k">if</span><span class="w">  </span><span class="nv">a</span><span class="ss">(</span><span class="nv">k</span><span class="ss">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">m</span><span class="ss">(</span><span class="nv">i</span>,<span class="nv">j</span><span class="ss">)</span>,<span class="w">  </span><span class="k">then</span>
+<span class="nv">ja</span><span class="ss">(</span><span class="nv">k</span><span class="ss">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">j</span>.<span class="w">  </span><span class="nv">in</span><span class="w"> </span><span class="nv">addition</span>,<span class="w"> </span><span class="nv">we</span><span class="w"> </span><span class="nv">need</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">know</span><span class="w"> </span><span class="nv">where</span><span class="w"> </span><span class="nv">each</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="nv">starts</span><span class="w"> </span><span class="nv">and</span>
+<span class="nv">how</span><span class="w"> </span><span class="nv">long</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">is</span>.<span class="w">  </span><span class="nv">the</span><span class="w"> </span><span class="nv">index</span><span class="w"> </span><span class="nv">positions</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">ja</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">where</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">rows</span><span class="w"> </span><span class="nv">of</span>
+<span class="nv">m</span><span class="w"> </span><span class="nv">begin</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">stored</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">array</span><span class="w"> </span><span class="nv">ia</span>.<span class="w">  </span><span class="nv">i</span>.<span class="nv">e</span>.,<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">m</span><span class="ss">(</span><span class="nv">i</span>,<span class="nv">j</span><span class="ss">)</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">first</span>
+<span class="ss">(</span><span class="nv">leftmost</span><span class="ss">)</span><span class="w"> </span><span class="nv">entry</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">i</span><span class="o">-</span><span class="nv">th</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="nv">and</span><span class="w">  </span><span class="nv">a</span><span class="ss">(</span><span class="nv">k</span><span class="ss">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">m</span><span class="ss">(</span><span class="nv">i</span>,<span class="nv">j</span><span class="ss">)</span>,<span class="w">  </span><span class="k">then</span>
+<span class="nv">ia</span><span class="ss">(</span><span class="nv">i</span><span class="ss">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">k</span>.<span class="w">  </span><span class="nv">moreover</span>,<span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">index</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">ja</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">first</span><span class="w"> </span><span class="nv">location</span>
+<span class="nv">following</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">last</span><span class="w"> </span><span class="nv">element</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">last</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">stored</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">ia</span><span class="ss">(</span><span class="nv">n</span><span class="o">+</span><span class="mi">1</span><span class="ss">)</span>.
+<span class="nv">thus</span>,<span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">number</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">entries</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">i</span><span class="o">-</span><span class="nv">th</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">given</span><span class="w"> </span><span class="nv">by</span>
+<span class="nv">ia</span><span class="ss">(</span><span class="nv">i</span><span class="o">+</span><span class="mi">1</span><span class="ss">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">ia</span><span class="ss">(</span><span class="nv">i</span><span class="ss">)</span>,<span class="w">  </span><span class="nv">the</span><span class="w"> </span><span class="nv">nonzero</span><span class="w"> </span><span class="nv">entries</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">i</span><span class="o">-</span><span class="nv">th</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">stored</span>
+<span class="nv">consecutively</span><span class="w"> </span><span class="nv">in</span>
+
+<span class="w">        </span><span class="nv">a</span><span class="ss">(</span><span class="nv">ia</span><span class="ss">(</span><span class="nv">i</span><span class="ss">))</span>,<span class="w">  </span><span class="nv">a</span><span class="ss">(</span><span class="nv">ia</span><span class="ss">(</span><span class="nv">i</span><span class="ss">)</span><span class="o">+</span><span class="mi">1</span><span class="ss">)</span>,<span class="w">  </span>...,<span class="w"> </span><span class="nv">a</span><span class="ss">(</span><span class="nv">ia</span><span class="ss">(</span><span class="nv">i</span><span class="o">+</span><span class="mi">1</span><span class="ss">)</span><span class="o">-</span><span class="mi">1</span><span class="ss">)</span>,
+
+<span class="nv">and</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">corresponding</span><span class="w"> </span><span class="nv">column</span><span class="w"> </span><span class="nv">indices</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">stored</span><span class="w"> </span><span class="nv">consecutively</span><span class="w"> </span><span class="nv">in</span>
+
+<span class="w">        </span><span class="nv">ja</span><span class="ss">(</span><span class="nv">ia</span><span class="ss">(</span><span class="nv">i</span><span class="ss">))</span>,<span class="w"> </span><span class="nv">ja</span><span class="ss">(</span><span class="nv">ia</span><span class="ss">(</span><span class="nv">i</span><span class="ss">)</span><span class="o">+</span><span class="mi">1</span><span class="ss">)</span>,<span class="w"> </span>...,<span class="w"> </span><span class="nv">ja</span><span class="ss">(</span><span class="nv">ia</span><span class="ss">(</span><span class="nv">i</span><span class="o">+</span><span class="mi">1</span><span class="ss">)</span><span class="o">-</span><span class="mi">1</span><span class="ss">)</span>.
+
+<span class="k">for</span><span class="w"> </span><span class="nv">example</span>,<span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="nv">matrix</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>                ( 1. 0. 2. 0. 0.)
+                ( 0. 3. 0. 0. 0.)
+            m = ( 0. 4. 5. 6. 0.)
+                ( 0. 0. 0. 7. 0.)
+                ( 0. 0. 0. 8. 9.)
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>would be stored as
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>               - 1  2  3  4  5  6  7  8  9
+            ---+--------------------------
+            ia - 1  3  4  7  8 10
+            ja - 1  3  2  2  3  4  4  4  5
+             a - 1. 2. 3. 4. 5. 6. 7. 8. 9.         .
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="w">     </span><span class="nv">the</span><span class="w"> </span><span class="nv">strict</span><span class="w"> </span><span class="nv">upper</span><span class="w"> </span><span class="ss">(</span><span class="nv">lower</span><span class="ss">)</span><span class="w"> </span><span class="nv">triangular</span><span class="w"> </span><span class="nv">portion</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">matrix</span>
+<span class="nv">u</span><span class="w"> </span><span class="ss">(</span><span class="nv">l</span><span class="ss">)</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">stored</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">similar</span><span class="w"> </span><span class="nv">fashion</span><span class="w"> </span><span class="nv">using</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">arrays</span><span class="w">  </span><span class="nv">iu</span>,<span class="w"> </span><span class="nv">ju</span>,<span class="w"> </span><span class="nv">u</span>
+<span class="ss">(</span><span class="nv">il</span>,<span class="w"> </span><span class="nv">jl</span>,<span class="w"> </span><span class="nv">l</span><span class="ss">)</span><span class="w">  </span><span class="nv">except</span><span class="w"> </span><span class="nv">that</span><span class="w"> </span><span class="nv">an</span><span class="w"> </span><span class="nv">additional</span><span class="w"> </span><span class="nv">array</span><span class="w"> </span><span class="nv">iju</span><span class="w"> </span><span class="ss">(</span><span class="nv">ijl</span><span class="ss">)</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">used</span><span class="w"> </span><span class="nv">to</span>
+<span class="nv">compress</span><span class="w"> </span><span class="nv">storage</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">ju</span><span class="w"> </span><span class="ss">(</span><span class="nv">jl</span><span class="ss">)</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">allowing</span><span class="w"> </span><span class="nv">some</span><span class="w"> </span><span class="nv">sequences</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">column</span>
+<span class="ss">(</span><span class="nv">row</span><span class="ss">)</span><span class="w"> </span><span class="nv">indices</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">used</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">more</span><span class="w"> </span><span class="nv">than</span><span class="w"> </span><span class="nv">one</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="ss">(</span><span class="nv">column</span><span class="ss">)</span><span class="w">  </span><span class="ss">(</span><span class="nv">n</span>.<span class="nv">b</span>.,<span class="w"> </span><span class="nv">l</span><span class="w"> </span><span class="nv">is</span>
+<span class="nv">stored</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">columns</span><span class="ss">)</span>.<span class="w">  </span><span class="nv">iju</span><span class="ss">(</span><span class="nv">k</span><span class="ss">)</span><span class="w"> </span><span class="ss">(</span><span class="nv">ijl</span><span class="ss">(</span><span class="nv">k</span><span class="ss">))</span><span class="w"> </span><span class="nv">points</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">starting</span>
+<span class="nv">location</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">ju</span><span class="w"> </span><span class="ss">(</span><span class="nv">jl</span><span class="ss">)</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">entries</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">kth</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="ss">(</span><span class="nv">column</span><span class="ss">)</span>.
+<span class="nv">compression</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">ju</span><span class="w"> </span><span class="ss">(</span><span class="nv">jl</span><span class="ss">)</span><span class="w"> </span><span class="nv">occurs</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">two</span><span class="w"> </span><span class="nv">ways</span>.<span class="w">  </span><span class="nv">first</span>,<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">row</span>
+<span class="ss">(</span><span class="nv">column</span><span class="ss">)</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">merged</span><span class="w"> </span><span class="nv">into</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">current</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="ss">(</span><span class="nv">column</span><span class="ss">)</span><span class="w"> </span><span class="nv">k</span>,<span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">the</span>
+<span class="nv">number</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">elements</span><span class="w"> </span><span class="nv">merged</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="ss">(</span><span class="nv">the</span><span class="w"> </span><span class="nv">tail</span><span class="w"> </span><span class="nv">portion</span><span class="w"> </span><span class="nv">of</span><span class="ss">)</span><span class="w"> </span><span class="nv">row</span>
+<span class="ss">(</span><span class="nv">column</span><span class="ss">)</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">same</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">final</span><span class="w"> </span><span class="nv">length</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="ss">(</span><span class="nv">column</span><span class="ss">)</span><span class="w"> </span><span class="nv">k</span>,<span class="w"> </span><span class="k">then</span>
+<span class="nv">the</span><span class="w"> </span><span class="nv">kth</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="ss">(</span><span class="nv">column</span><span class="ss">)</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">tail</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="ss">(</span><span class="nv">column</span><span class="ss">)</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">identical</span>
+<span class="nv">and</span><span class="w"> </span><span class="nv">iju</span><span class="ss">(</span><span class="nv">k</span><span class="ss">)</span><span class="w"> </span><span class="ss">(</span><span class="nv">ijl</span><span class="ss">(</span><span class="nv">k</span><span class="ss">))</span><span class="w"> </span><span class="nv">points</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">start</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">tail</span>.<span class="w">  </span><span class="nv">second</span>,<span class="w"> </span><span class="k">if</span>
+<span class="nv">some</span><span class="w"> </span><span class="nv">tail</span><span class="w"> </span><span class="nv">portion</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="ss">(</span><span class="nv">k</span><span class="o">-</span><span class="mi">1</span><span class="ss">)</span><span class="nv">st</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="ss">(</span><span class="nv">column</span><span class="ss">)</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">identical</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">the</span>
+<span class="nv">head</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">kth</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="ss">(</span><span class="nv">column</span><span class="ss">)</span>,<span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">iju</span><span class="ss">(</span><span class="nv">k</span><span class="ss">)</span><span class="w"> </span><span class="ss">(</span><span class="nv">ijl</span><span class="ss">(</span><span class="nv">k</span><span class="ss">))</span><span class="w"> </span><span class="nv">points</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">the</span>
+<span class="nv">start</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">that</span><span class="w"> </span><span class="nv">tail</span><span class="w"> </span><span class="nv">portion</span>.<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="nv">example</span>,<span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">nonzero</span><span class="w"> </span><span class="nv">structure</span><span class="w"> </span><span class="nv">of</span>
+<span class="nv">the</span><span class="w"> </span><span class="nv">strict</span><span class="w"> </span><span class="nv">upper</span><span class="w"> </span><span class="nv">triangular</span><span class="w"> </span><span class="nv">part</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">matrix</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>            d 0 x x x
+            0 d 0 x x
+            0 0 d x 0
+            0 0 0 d x
+            0 0 0 0 d
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>would be represented as
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>                - 1 2 3 4 5 6
+            ----+------------
+             iu - 1 4 6 7 8 8
+             ju - 3 4 5 4
+            iju - 1 2 4 3           .
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>the diagonal entries of l and u are assumed to be equal to one and
+are not stored.  the array d contains the reciprocals of the
+diagonal entries of the matrix d.
+</code></pre></div>
+
+<h3 id="iii-additional-storage-savings">iii. additional storage savings</h3>
+<div class="codehilite"><pre><span></span><code><span class="w">     </span><span class="nv">in</span><span class="w"> </span><span class="nv">nsfc</span>,<span class="w"> </span><span class="nv">r</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">ic</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">same</span><span class="w"> </span><span class="nv">array</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">calling</span>
+<span class="nv">sequence</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">no</span><span class="w"> </span><span class="nv">reordering</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">coefficient</span><span class="w"> </span><span class="nv">matrix</span><span class="w"> </span><span class="nv">has</span><span class="w"> </span><span class="nv">been</span><span class="w"> </span><span class="nv">done</span>.
+
+<span class="w">     </span><span class="nv">in</span><span class="w"> </span><span class="nv">nnfc</span>,<span class="w"> </span><span class="nv">r</span>,<span class="w"> </span><span class="nv">c</span>,<span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">ic</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">same</span><span class="w"> </span><span class="nv">array</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">no</span>
+<span class="nv">reordering</span><span class="w"> </span><span class="nv">has</span><span class="w"> </span><span class="nv">been</span><span class="w"> </span><span class="nv">done</span>.<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nv">only</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">rows</span><span class="w"> </span><span class="nv">have</span><span class="w"> </span><span class="nv">been</span><span class="w"> </span><span class="nv">reordered</span>,
+<span class="k">then</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">ic</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">same</span><span class="w"> </span><span class="nv">array</span>.<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">column</span>
+<span class="nv">orderings</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">same</span>,<span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">r</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">same</span><span class="w"> </span><span class="nv">array</span>.<span class="w">  </span><span class="nv">z</span><span class="w"> </span><span class="nv">and</span>
+<span class="nv">row</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">same</span><span class="w"> </span><span class="nv">array</span>.
+
+<span class="w">     </span><span class="nv">in</span><span class="w"> </span><span class="nv">nnsc</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="nv">nntc</span>,<span class="w"> </span><span class="nv">r</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">same</span><span class="w"> </span><span class="nv">array</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">no</span>
+<span class="nv">reordering</span><span class="w"> </span><span class="nv">has</span><span class="w"> </span><span class="nv">been</span><span class="w"> </span><span class="nv">done</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">column</span><span class="w"> </span><span class="nv">orderings</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">the</span>
+<span class="nv">same</span>.<span class="w">  </span><span class="nv">z</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">same</span><span class="w"> </span><span class="nv">array</span>.<span class="w">  </span><span class="nv">however</span>,<span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="nv">will</span><span class="w"> </span><span class="nv">be</span>
+<span class="nv">destroyed</span>.
+</code></pre></div>
+
+<h3 id="iv-parameters">iv.  parameters</h3>
+<div class="codehilite"><pre><span></span><code><span class="w">     </span><span class="n">following</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">programs</span><span class="o">.</span><span class="w">  </span><span class="n">names</span><span class="w"> </span><span class="n">are</span>
+<span class="n">uniform</span><span class="w"> </span><span class="n">among</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">various</span><span class="w"> </span><span class="n">subroutines</span><span class="o">.</span><span class="w">  </span><span class="k">class</span><span class="w"> </span><span class="n">abbreviations</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="o">--</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>       n - integer variable
+       f - real variable
+       v - supplies a value to a subroutine
+       r - returns a result from a subroutine
+       i - used internally by a subroutine
+       a - array
+
+ class - parameter
+ ------+----------
+ fva   - a     - nonzero entries of the coefficient matrix m, stored
+       -           by rows.
+       -           size = number of nonzero entries in m.
+ fva   - b     - right-hand side b.
+       -           size = n.
+ nva   - c     - ordering of the columns of m.
+       -           size = n.
+ fvra  - d     - reciprocals of the diagonal entries of the matrix d.
+       -           size = n.
+ nr    - flag  - error flag.  values and their meanings are --
+       -            0     no errors detected
+       -            n+k   null row in a  --  row = k
+       -           2n+k   duplicate entry in a  --  row = k
+       -           3n+k   insufficient storage for jl  --  row = k
+       -           4n+1   insufficient storage for l
+       -           5n+k   null pivot  --  row = k
+       -           6n+k   insufficient storage for ju  --  row = k
+       -           7n+1   insufficient storage for u
+       -           8n+k   zero pivot  --  row = k
+ nva   - ia    - pointers to delimit the rows of a.
+       -           size = n+1.
+ nvra  - ijl   - pointers to the first element in each column in jl,
+       -           used to compress storage in jl.
+       -           size = n.
+ nvra  - iju   - pointers to the first element in each row in ju, used
+       -           to compress storage in ju.
+       -           size = n.
+ nvra  - il    - pointers to delimit the columns of l.
+       -           size = n+1.
+ nvra  - iu    - pointers to delimit the rows of u.
+       -           size = n+1.
+ nva   - ja    - column numbers corresponding to the elements of a.
+       -           size = size of a.
+ nvra  - jl    - row numbers corresponding to the elements of l.
+       -           size = jlmax.
+ nv    - jlmax - declared dimension of jl.  jlmax must be larger than
+       -           the number of nonzeros in the strict lower triangle
+       -           of m plus fillin minus compression.
+ nvra  - ju    - column numbers corresponding to the elements of u.
+       -           size = jumax.
+ nv    - jumax - declared dimension of ju.  jumax must be larger than
+       -           the number of nonzeros in the strict upper triangle
+       -           of m plus fillin minus compression.
+ fvra  - l     - nonzero entries in the strict lower triangular portion
+       -           of the matrix l, stored by columns.
+       -           size = lmax.
+ nv    - lmax  - declared dimension of l.  lmax must be larger than
+       -           the number of nonzeros in the strict lower triangle
+       -           of m plus fillin  (il(n+1)-1 after nsfc).
+ nv    - n     - number of variables/equations.
+ nva   - r     - ordering of the rows of m.
+       -           size = n.
+ fvra  - u     - nonzero entries in the strict upper triangular portion
+       -           of the matrix u, stored by rows.
+       -           size = umax.
+ nv    - umax  - declared dimension of u.  umax must be larger than
+       -           the number of nonzeros in the strict upper triangle
+       -           of m plus fillin  (iu(n+1)-1 after nsfc).
+ fra   - z     - solution x.
+       -           size = n.
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>   ----------------------------------------------------------------
+</code></pre></div>
+
+<h3 id="subroutine-nroc">subroutine nroc</h3>
+<h3 id="reorders-rows-of-a-leaving-row-order-unchanged">reorders rows of a, leaving row order unchanged</h3>
+<div class="codehilite"><pre><span></span><code>   input parameters.. n, ic, ia, ja, a
+   output parameters.. ja, a, flag
+
+   parameters used internally..
+</code></pre></div>
+
+<p>nia   - p     - at the kth step, p is a linked list of the reordered
+       -           column indices of the kth row of a.  p(n+1) points
+       -           to the first entry in the list.
+       -           size = n+1.
+ nia   - jar   - at the kth step,jar contains the elements of the
+       -           reordered column indices of a.
+       -           size = n.
+ fia   - ar    - at the kth step, ar contains the elements of the
+       -           reordered row of a.
+       -           size = n.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-n~57"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>N</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ic~10"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>Ic</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ia~20"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>Ia</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ja~20"></span>
+              integer,
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>Ja</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-a~20"></span>
+              real(kind=dp),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>A</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-jar~2"></span>
+              integer,
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>Jar</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ar~2"></span>
+              real(kind=dp),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>Ar</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-p~10"></span>
+              integer,
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>P</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flag~10"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Flag</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+
+
+    <section>    
+      <h2>Variables</h2>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-i~113"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>i</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-j~58"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>j</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-jmax~15"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>jmax</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-jmin~15"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>jmin</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-k~41"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>k</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-newj~2"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>newj</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    </section>
+    <br>
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="k">subroutine </span><span class="n">nroc</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">Ic</span><span class="p">,</span><span class="n">Ia</span><span class="p">,</span><span class="n">Ja</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">Jar</span><span class="p">,</span><span class="n">Ar</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">Flag</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!      real  a(*), ar(*)</span>
+<span class="kt">integer</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">N</span>
+<span class="kt">integer</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Ic</span>
+<span class="kt">integer</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Ia</span>
+<span class="kt">integer</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Ja</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">A</span>
+<span class="kt">integer</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Jar</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Ar</span>
+<span class="kt">integer</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">P</span>
+<span class="kt">integer</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Flag</span>
+<span class="c">!</span>
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">jmax</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">jmin</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">newj</span>
+<span class="w">   </span><span class="c">!</span>
+<span class="w">   </span><span class="c">!   ******  for each nonempty row  *******************************</span>
+<span class="w">   </span><span class="k">do </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">N</span>
+<span class="w">      </span><span class="n">jmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ia</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="w">      </span><span class="n">jmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ia</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">jmin</span><span class="o">&lt;=</span><span class="n">jmax</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">         </span><span class="n">P</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">         </span><span class="c">!   ******  insert each element in the list  *********************</span>
+<span class="w">         </span><span class="k">do </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jmin</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">jmax</span>
+<span class="w">            </span><span class="n">newj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ic</span><span class="p">(</span><span class="n">Ja</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
+<span class="w">            </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">            </span><span class="k">do while</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">&lt;</span><span class="n">newj</span><span class="w"> </span><span class="p">)</span>
+<span class="w">               </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">            </span><span class="k">enddo</span>
+<span class="k">            if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">==</span><span class="n">newj</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">               </span><span class="c">!</span>
+<span class="w">               </span><span class="c">!  ** error.. duplicate entry in a</span>
+<span class="w">               </span><span class="n">Flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k</span>
+<span class="w">            </span><span class="k">return</span>
+<span class="k">            else</span>
+<span class="k">               </span><span class="n">P</span><span class="p">(</span><span class="n">newj</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">               </span><span class="n">P</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newj</span>
+<span class="w">               </span><span class="n">Jar</span><span class="p">(</span><span class="n">newj</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ja</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+<span class="w">               </span><span class="n">Ar</span><span class="p">(</span><span class="n">newj</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+<span class="w">            </span><span class="k">endif</span>
+<span class="k">         enddo</span>
+<span class="w">         </span><span class="c">!   ******  replace old row in ja and a  *************************</span>
+<span class="w">         </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">         </span><span class="k">do </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jmin</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">jmax</span>
+<span class="w">            </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">            </span><span class="n">Ja</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Jar</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">            </span><span class="n">A</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ar</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">         </span><span class="k">enddo</span>
+<span class="k">      endif</span>
+<span class="k">   enddo</span>
+<span class="k">   </span><span class="n">Flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="k">end subroutine </span><span class="n">nroc</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              odepack
+ was developed by Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams<br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2025-12-19 11:47 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

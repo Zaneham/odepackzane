@@ -1,0 +1,657 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="ODEPACK - A Systematized Collection of ODE Solvers">
+    <meta name="author" content="Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams" >
+    <link rel="icon" href="./favicon.png">
+
+    <title> odepack </title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="./css/fontawesome.min.css" rel="stylesheet">
+    <link href="./css/brands.min.css" rel="stylesheet">
+    <link href="./css/regular.min.css" rel="stylesheet">
+    <link href="./css/solid.min.css" rel="stylesheet">
+    <link href="./css/v4-font-face.min.css" rel="stylesheet">
+    <link href="./css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="./css/local.css" rel="stylesheet">
+    <link href="./css/pygments.css" rel="stylesheet">
+      <link href="./css/user.css" rel="stylesheet">
+    <script src="./js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="./index.html">odepack </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="./lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./lists/procedures.html">Procedures</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="./search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <!-- Main component for a primary marketing message or call to action -->
+    <div class="p-5 mb-4 bg-light border rounded-3" id="jumbotron">
+      <p>ODEPACK - A Systematized Collection of ODE Solvers</p>
+        <p> Find us on&hellip;</p>
+      <p>
+        <a class="btn btn-lg btn-primary" href="https://github.com/jacobwilliams/odepack" role="button">GitHub</a>
+        
+        
+        
+        
+      </p>
+    </div>
+
+      <div class="row" id='text'>
+        <div class=col-md-8>
+          <h1>odepack</h1>
+          <!--
+see more recent:
+
+   https://computing.llnl.gov/projects/odepack
+
+might have test cases:
+
+   https://people.sc.fsu.edu/~jburkardt/f77_src/odepack/odepack.html
+
+markdown references
+
+   https://michelf.ca/projects/php-markdown/extra
+-->
+
+<h1 id="_1"><img alt="ODEPACK" src="docs/images/odepack.png"></h1>
+<h1 id="module-odepack">module ODEPACK</h1>
+<p>This is a WIP(Work In Progress) to evaluate the effort required and
+feasibility of updating older Fortran code from the netlib repository
+using a combination of the commercial plusFORT/spag software and GNU
+utilities as well as conventional manual refactoring.</p>
+<p>Many thanks to plusFORT for making an evaluation copy available for
+several months to the Fortran Community. The plusFORT tools were crucial
+to this study and unmatched in my experience for removing deprecated
+syntax from pre-f2003 code.</p>
+<p>This began with <a href="https://computing.llnl.gov/projects/odepack">ODEPACK</a></p>
+<p>the ODEPACK package has been selected as a significant code that is well
+documented and structured for its vintage, and available on the netlib
+site and covered by a public domain license.</p>
+<h4 id="preliminary-targets-for-phase-i">preliminary targets for phase I:</h4>
+<ul>
+<li>remove obsolescent syntax (trying plusFORT and spag)</li>
+<li>able to build using fpm(1)  (the Fortran Package Manager)</li>
+<li>in debug mode (ongoing)</li>
+<li>with ifort, gfortran, nvfortran</li>
+<li>text viewable in ford(1) and extractable as markup that can run through pandoc(1) (ongoing)</li>
+<li>available on github (or equivalent)</li>
+<li>no common blocks</li>
+<li>no equivalences</li>
+<li>build as a (single?) module M_odepack (ongoing)</li>
+<li>complete set of unit tests (tests currently only use the original examples)</li>
+</ul>
+<p>The originally bundled subset of BLAS/LAPACK routines are
+being included in the module.  In production, this might not be done in
+order to be able to easily call external optimized versions.</p>
+<p>The biggest hinderance is some storage used for both INTEGER and DOUBLE
+PRECISION values.</p>
+<p>One take-away is how critical unit tests are to enable rapid development
+(which so far this package does not have)</p>
+<p>The initial pass was done just using the original sample programs as
+unit tests. This may have allowed for introduction of errors as this
+is a WIP but the original samples run with the same output as the original.</p>
+<p>plusFORT was invaluable and reduced the effort by an estimated 85
+percent. The results have been encouraging enough to inspire completing
+the transformation.</p>
+<h3 id="phase-ii">Phase II ?</h3>
+<p>Some of the goals of phase I are incomplete, but The results of this first
+pass were significant enough that this project will hopefully continue.</p>
+<p>A complete unit test suite is required to allow development to proceed
+rapidily. Contributions, especially from current ODEPACK users are
+particularly welcome.</p>
+<p>Another major issue is the remaining non-standard code.  Non-standard (but
+at the time de-facto fortran standard) such as equivalencing different
+types, creating scratch space that is used as different numeric types,
+and treating scalars as arrays and vice-versa as well as passing the same
+arrays or values multiple times are the most time-consuming usages to
+correct to standard-conforming, particularly since spag(1) had already
+done an excellent job with updating the pre-f2003 code. spag(1) is not
+(currently?) sufficient by itself to automate the additional refactoring
+desired, which includes using post-f95 features and code restructuring,
+so the remaining work requires manual recoding.</p>
+<p>The type-mismatch issues have not been eliminated enough to include all
+the routines in the module, so  those in the files &ldquo;M_da1/dprep.inc&rdquo;
+&ldquo;M_da1/dainvgs.inc&rdquo; &ldquo;M_da1/dprepi.inc&rdquo; &ldquo;M_da1/dstodi.inc&rdquo; and
+&ldquo;M_da1_/dstode.inc&rdquo; still require being built without an interface
+definition.</p>
+<h3 id="building-with-fpm1">building with fpm(1)</h3>
+<p>This version of ODEPACK already builds with an included make(1) file
+and as an fpm(1) package with the current options:</p>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span>fpm<span class="w"> </span>run<span class="w">                     </span>--compiler<span class="w"> </span>nvfortran<span class="w"> </span>--example<span class="w"> </span><span class="s1">&#39;*&#39;</span>
+<span class="w"> </span>fpm<span class="w"> </span>run<span class="w"> </span>--profile<span class="w"> </span>release<span class="w">   </span>--compiler<span class="w"> </span>ifort<span class="w">     </span>--example<span class="w"> </span><span class="s1">&#39;*&#39;</span>
+<span class="w"> </span><span class="c1"># gfortran for production</span>
+<span class="w"> </span>fpm<span class="w"> </span>run<span class="w"> </span>--profile<span class="w"> </span>release<span class="w"> </span>--flag<span class="w"> </span>-fallow-argument-mismatch<span class="w"> </span>--compiler<span class="w"> </span>gfortran<span class="w">  </span>--example<span class="w"> </span><span class="s1">&#39;*&#39;</span>
+<span class="w"> </span><span class="c1"># gfortran for debug</span>
+<span class="w"> </span>fpm<span class="w"> </span>run<span class="w"> </span>--profile<span class="w"> </span>debug<span class="w"> </span>--flag<span class="w"> </span>-fallow-argument-mismatch<span class="w"> </span>--flag<span class="w"> </span>-std<span class="o">=</span>f2018<span class="w"> </span>--compiler<span class="w"> </span>gfortran<span class="w">  </span>--example<span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="w"> </span>--verbose
+</code></pre></div>
+
+<h3 id="building-with-make1">building with make(1)</h3>
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>src
+<span class="c1"># gfortran</span>
+make<span class="w"> </span>clean
+make<span class="w"> </span>gfortran
+make<span class="w"> </span>run
+make<span class="w"> </span><span class="nb">test</span>
+
+<span class="c1"># ifort</span>
+make<span class="w"> </span>clean
+make<span class="w"> </span>ifort
+make<span class="w"> </span>run
+make<span class="w"> </span><span class="nb">test</span>
+
+<span class="c1"># nvfortran</span>
+make<span class="w"> </span>clean
+make<span class="w"> </span>nvfortran
+make<span class="w"> </span>run
+make<span class="w"> </span><span class="nb">test</span>
+</code></pre></div>
+
+<h3 id="to-rebuild-the-documentation-with-ford1-use">To rebuild the documentation with ford(1), use</h3>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span>ford<span class="w"> </span>ford.md
+</code></pre></div>
+
+<p>The code is far more readable after having been refactored by
+a combination of using spag(1) from the plusFORT package and manual
+editing, and is believed as useable as the original.</p>
+<p>There are a few notes in src/M_odepack.f90 concerning continuing issues.</p>
+<p>Current users of ODEPACK are encouraged to try this version and provide
+feedback.</p>
+<p>Hopefully as a community we can complete creating a new maintained
+production-quality version of this venerable and still-valuable package.</p>
+<h3 id="documentation">Documentation</h3>
+<p>The ongoing API documentation for the current <code>master</code> branch can
+be found <a href="https://jacobwilliams.github.io/odepack/">here</a>.
+This is generated by processing the source files with
+<a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>.</p>
+<h4 id="solvers-for-explicitly-given-systems">Solvers for explicitly given systems.</h4>
+<p>Links to the solver-specific documenation for the main procedures (as described below):</p>
+<ul>
+<li><a href="https://jacobwilliams.github.io/odepack/proc/dlsoda.html">dlsoda</a></li>
+<li><a href="https://jacobwilliams.github.io/odepack/proc/dlsodar.html">dlsodar</a></li>
+<li><a href="https://jacobwilliams.github.io/odepack/proc/dlsode.html">dlsode</a></li>
+<li><a href="https://jacobwilliams.github.io/odepack/proc/dlsodes.html">dlsodes</a></li>
+<li><a href="https://jacobwilliams.github.io/odepack/proc/dlsodi.html">dlsodi</a></li>
+<li><a href="https://jacobwilliams.github.io/odepack/proc/dlsodis.html">dlsodis</a></li>
+<li><a href="https://jacobwilliams.github.io/odepack/proc/dlsodkr.html">dlsodkr</a></li>
+<li><a href="https://jacobwilliams.github.io/odepack/proc/dlsodpk.html">dlsodpk</a></li>
+<li><a href="https://jacobwilliams.github.io/odepack/proc/dlsoibt.html">dlsoibt</a></li>
+</ul>
+<p>Here is an overview primarily from the original documentation  &hellip;</p>
+<hr>
+<h2 id="brief-description-of-odepack-a-systematized-collection-of-ode-solvers-double-precision-version">Brief Description of ODEPACK - A Systematized Collection of ODE Solvers (Double Precision Version)</h2>
+<div class="codehilite"><pre><span></span><code>Alan C. Hindmarsh
+Center for Applied Scientific Computing, L-561
+Lawrence Livermore National Laboratory
+Livermore, CA 94551, U.S.A.
+
+20 June 2001
+</code></pre></div>
+
+<p>Work performed under the auspices of the U.S. Department of Energy
+by the Lawrence Livermore National Laboratory under contract
+No. W-7405-Eng-48, and supported (formerly) by the DOE Office of
+Energy Research, Applied Mathematical Sciences Research Program.</p>
+<hr>
+<p>ODEPACK is a collection of Fortran solvers for the initial value
+problem for ordinary differential equation systems.  It consists of nine
+solvers, namely a basic solver called LSODE and eight variants of it &ndash;
+LSODES, LSODA, LSODAR, LSODPK, LSODKR, LSODI, LSOIBT, and LSODIS.
+The collection is suitable for both stiff and nonstiff systems.  It
+includes solvers for systems given in explicit form, dy/dt = f(t,y),
+and also solvers for systems given in linearly implicit form,
+A(t,y) dy/dt = g(t,y).  Two of the solvers use general sparse matrix
+solvers for the linear systems that arise.  Two others use iterative
+(preconditioned Krylov) methods instead of direct methods for these
+linear systems.  The most recent addition is LSODIS, which solves
+implicit problems with general sparse treatment of all matrices involved.</p>
+<p>The ODEPACK solvers are written in standard Fortran 77, with a few
+exceptions, and with minimal machine dependencies.  There are separate
+double and single precision versions of ODEPACK.  The actual solver
+names are those given above with a prefix of D- or S- for the double
+or single precision version, respectively, i.e. DLSODE/SLSODE, etc.
+Each solver consists of a main driver subroutine having the same name
+as the solver and some number of subordinate routines.  For each
+solver, there is also a demonstration program, which solves one or two
+simple problems in a somewhat self-checking manner.</p>
+<p>Recently, the ODEPACK solvers were upgraded to improve their
+portability in numerous ways.  Among the improvements are (a) renaming
+of routines and Common blocks to distinguish double and single
+precision versions, (b) use of generic intrinsic function names, (c)
+elimination of the Block Data subprogram, (d) use of a portable
+routine to set the unit roundoff, and (e) passing of quoted strings to
+the error message handler.  In addition, the prologue and internal
+comments were reformatted, and use mixed upper/lower case.  Numerous
+minor corrections and improvements were also made.</p>
+<p>The above upgrade operations were applied to LSODE earlier than they
+were to the rest of ODEPACK, and the two upgrades were done somewhat
+independently.  As a result, some differences will be apparent in the
+source files of LSODE and the other solvers &ndash; primarily in the
+formatting of the comment line prologue of the main driver routine.
+In Subroutines DLSODE/SLSODE and their subordinate routines, the
+prologue was written in &ldquo;SLATEC format&rdquo;, while for the other solvers a
+more relaxed style was used.  The differences are entirely cosmetic,
+however, and do not affect performance.</p>
+<p>Documentation on the usage of each solver is provided in the
+initial block of comment lines in the source file, which (in most
+cases) includes a simple example.  A demonstration program (in
+separate double/single precision versions) is also available.</p>
+<p>What follows is a summary of the capabilities of ODEPACK, comments
+about usage documentation, and notes about installing the collection.
+For additional documentation on ODEPACK, see also the papers [1], [2]
+(for LSODE), and [3] (for LSODPK and LSODKR), and in the references
+cited there.  (However, the document [2] does not reflect the upgrade
+operations described above.)</p>
+<h3 id="references">References:</h3>
+<ol>
+<li>
+<p>A. C. Hindmarsh, &ldquo;<a href="https://computation.llnl.gov/casc/nsde/pubs/u88007.pdf">ODEPACK, A Systematized Collection of ODE Solvers</a>,&rdquo;
+     in Scientific Computing, R. S. Stepleman et al. (eds.), North-Holland,
+     Amsterdam, 1983 (vol. 1 of IMACS Transactions on Scientific Computation),
+     pp. 55-64.</p>
+</li>
+<li>
+<p>K. Radhakrishnan and A. C. Hindmarsh, &ldquo;<a href="https://computation.llnl.gov/casc/nsde/pubs/u113855.pdf">Description and Use of LSODE,
+     the Livermore Solver for Ordinary Differential Equations</a>,&rdquo; LLNL
+     report UCRL-ID-113855, December 1993.</p>
+</li>
+<li>
+<p>P. N. Brown and A. C. Hindmarsh, &ldquo;<a href="https://computation.llnl.gov/casc/nsde/pubs/u95088.pdf">Reduced Storage Matrix Methods
+     in Stiff ODE Systems</a>,&rdquo; J. Appl. Math. &amp; Comp., 31 (1989), pp.40-91.</p>
+</li>
+</ol>
+<hr>
+<h3 id="i-summary-of-the-odepack-solvers">I. Summary of the ODEPACK Solvers</h3>
+<h4 id="a-solvers-for-explicitly-given-systems">A. Solvers for explicitly given systems.</h4>
+<p>For each of the following solvers, it is assumed that the ODEs are
+given explicitly, so that the system can be written in the form
+dy/dt = f(t,y), where y is the vector of dependent variables, and t is
+the independent variable.</p>
+<ol>
+<li>
+<p>LSODE (Livermore Solver for Ordinary Differential Equations) is the
+   basic solver of the collection.  It solves stiff and nonstiff systems
+   of the form dy/dt = f.  In the stiff case, it treats the Jacobian
+   matrix df/dy as either a dense (full) or a banded matrix, and as either
+   user-supplied or internally approximated by difference quotients.
+   It uses Adams methods (predictor-corrector) in the nonstiff case,
+   and Backward Differentiation Formula (BDF) methods (the Gear methods)
+   in the stiff case.  The linear systems that arise are solved by direct
+   methods (LU factor/solve).  LSODE supersedes the older GEAR and GEARB
+   packages, and reflects a complete redesign of the user interface
+   and internal organization, with some algorithmic improvements.</p>
+</li>
+<li>
+<p>LSODES, written jointly with A. H. Sherman, solves systems dy/dt = f
+   and in the stiff case treats the Jacobian matrix in general sparse
+   form.  It determines the sparsity structure on its own, or optionally
+   accepts this information from the user.  It then uses parts of the
+   Yale Sparse Matrix Package (YSMP) to solve the linear systems that
+   arise, by a sparse (direct) LU factorization/backsolve method.
+   LSODES supersedes, and improves upon, the older GEARS package.</p>
+</li>
+<li>
+<p>LSODA, written jointly with L. R. Petzold, solves systems dy/dt = f
+   with a dense or banded Jacobian when the problem is stiff, but it
+   automatically selects between nonstiff (Adams) and stiff (BDF)
+   methods.  It uses the nonstiff method initially, and dynamically
+   monitors data in order to decide which method to use.</p>
+</li>
+<li>
+<p>LSODAR, also written jointly with L. R. Petzold, is a variant of
+   LSODA with a rootfinding capability added.  Thus it solves problems
+   dy/dt = f with dense or banded Jacobian and automatic method
+   selection, and at the same time, it finds the roots of any of a
+   set of given functions of the form g(t,y).  This is often useful
+   for finding stop conditions, or for finding points at which a switch
+   is to be made in the function f.</p>
+</li>
+<li>
+<p>LSODPK, written jointly with Peter N. Brown, is a variant of LSODE
+   in which the direct solvers for the linear systems have been replaced
+   by a selection of four preconditioned Krylov (iterative) solvers.
+   The user must supply a pair of routine to evaluate, preprocess, and
+   solve the (left and/or right) preconditioner matrices.  LSODPK also
+   includes an option for a user-supplied linear system solver to be used
+   without Krylov iteration.</p>
+</li>
+<li>
+<p>LSODKR is a variant of LSODPK with the addition of the same
+   rootfinding capability as in LSODAR, and also of automatic switching
+   between functional and Newton iteration.  The nonlinear iteration
+   method-switching differs from the method-switching in LSODA and LSODAR,
+   but provides similar savings by using the cheaper method in the non-stiff
+   regions of the problem.  LSODKR also improves on the Krylov methods in
+   LSODPK by offering the option to save and reuse the approximate Jacobian
+   data underlying the preconditioner.</p>
+</li>
+</ol>
+<h4 id="b-solvers-for-linearly-implicit-systems">B. Solvers for linearly implicit systems.</h4>
+<p>The following solvers treat systems in the linearly implicit form
+A(t,y) dy/dt = g(t,y), A = a square matrix, i.e. with the derivative
+dy/dt implicit, but linearly so.  These solvers allow A to be
+singular, in which case the system is a differential-algebraic
+equation (DAE) system.  In that case, the user must be very careful
+to supply a well-posed problem with consistent initial conditions.</p>
+<ol>
+<li>
+<p>LSODI, written jointly with J. F. Painter, solves linearly implicit
+   systems in which the matrices involved (A, dg/dy, and d(A dy/dt)/dy)
+   are all assumed to be either dense or banded.  LSODI supersedes the
+   older GEARIB solver and improves upon it in numerous ways.</p>
+</li>
+<li>
+<p>LSOIBT, written jointly with C. S. Kenney, solves linearly implicit
+   systems in which the matrices involved are all assumed to be
+   block-tridiagonal.  Linear systems are solved by the LU method.</p>
+</li>
+<li>
+<p>LSODIS, written jointly with S. Balsdon, solves linearly implicit
+   systems in which the matrices involved are all assumed to be sparse.
+   Like LSODES, LSODIS either determines the sparsity structure or
+   accepts it from the user, and uses parts of the Yale Sparse Matrix
+   Package to solve the linear systems that arise, by a direct method.</p>
+</li>
+</ol>
+<hr>
+<h3 id="ii-usage-documentation">II. Usage Documentation</h3>
+<p>Each of the solvers in the ODEPACK collection is headed by a
+user-callable driver subroutine, with the same name as the solver
+(DLSODE, etc.).  The call sequence of the driver routine includes the
+names of one or more user-supplied subroutines that define the ODE
+system, and various other problem and solution parameters.  Complete
+user documentation is given in the initial block of comment lines
+(the prologue) in the driver routine.  In each case, this prologue is
+organized as follows:</p>
+<ul>
+<li>Summary of Usage (short, for standard modes of use)</li>
+<li>Example Problem, with code and output (except for LSODPK and LSODKR)</li>
+<li>Full Description of User Interface, further divided as follows:<ol>
+<li>Call sequence description (including optional inputs/outputs)</li>
+<li>Optionally callable routines</li>
+<li>Descriptions of internal Common blocks</li>
+<li>Optionally user-replaceable routines</li>
+</ol>
+</li>
+<li>Revision History, showing date written and dates of revisions</li>
+<li>Other Routines, a list of all subordinate routines for the solver</li>
+</ul>
+<p>First-time users should read only the Summary of Usage and look at the
+the Example Problem (or demonstration program), then later refer to the
+Full Description if and when more details or nonstandard options are needed.</p>
+<hr>
+<h3 id="iii-installation-notes">III. Installation Notes</h3>
+<h5 id="use-of-supplied-matrix-procedures">Use of supplied matrix procedures</h5>
+<p>THe src/M_matrix/ directory  includes modified versions of routines from the
+LINPACK and BLAS collections that are needed by the solvers (and by two
+of the demonstration programs), for the solution of dense and banded
+linear systems and associated basic linear algebra operations.
+These routine are:</p>
+<div class="codehilite"><pre><span></span><code>   <span class="ge">_From LINPACK_</span> :  DGEFA, DGESL, DGBFA, DGBSL
+   <span class="ge">_From the BLAS_</span>: DAXPY, DCOPY, DDOT, DSCAL, DNRM2, IDAMAX
+</code></pre></div>
+
+<p>If your computer system already has these routines, and especially if it
+has machine-optimized versions, the copies provided in the M_module
+module should probably not be called by your program if high performance
+is required.</p>
+<h5 id="the-message-package">The message package</h5>
+<p>The second auxiliary source file directory M_da1/ includes a set of five
+routines &ndash; XERRWD, XSETUN, XSETF, IXSAV, IUMACH &ndash; which handle error
+messages from the solvers.</p>
+<p>These routines are slated for elimination and replacement with a 
+more intuitive interface.</p>
+<p>This set is in fact a reduced version (sufficient for the needs of
+ODEPACK) of a much larger error handling package from the SLATEC Library.
+If your computer system already has the full SLATEC error handler, the
+version provided here can be ignored.  If the reduced version is used,
+its machine-dependent features should be checked first; see comments in
+Subroutine XERRWD.</p>
+<h5 id="non-standard-code">Non-standard code</h5>
+<ol>
+<li>ODEPACK contains a few instances where the Fortran Standard is violated:</li>
+</ol>
+<p>(a) In various places in the LSODES and LSODIS solvers, a call to a
+   subroutine has a subscripted real array as an argument where the
+   subroutine called expects an integer array.  Calls of this form
+   occur in Subroutine DLSODES (to DSTODE), in DIPREP (to DPREP),
+   in Subroutine DLSODIS (to DSTODI), and in DIPREPI (to DPREPI).
+   Another such call occurs in the DLSODES demonstration program,
+   from the main program to Subroutine SSOUT.  </p>
+<p>This is done in order
+   to use work space in an efficient manner, as the same space is
+   sometimes used for real work space and sometimes for integer work
+   space.  If your compiler does not accept this feature, one possible
+   way to get the desired result is to compile the called routines
+   and calling routines in separate jobs, and then combine the binary
+   modules in an appropriate manner. </p>
+<p>If this procedure is still not
+   acceptable under your system, it will be necessary to radically
+   alter the structure of the array RWORK within the LSODES or LSODIS
+   solver package.  (See also Note 5 below.)</p>
+<p>(b) Each ODEPACK solver treats the arguments NEQ, Y, RTOL, and ATOL
+   as arrays, even though the length may be only 1.  Moreover,
+   except for Y, the usage instructions say that these arguments
+   may be either arrays or scalars.  If your system does not allow
+   such a mismatch, then the documentation of these arguments
+   should be changed accordingly.</p>
+<ol>
+<li>For maximum storage economy, the LSODES and LSODIS solvers make use
+of the real to integer wordlength ratio.  This is assumed to be an
+integer L such that if a real array R and an integer array M occupy
+the same space in memory, R(1) having the same bit address as M(1),
+then R(I) has the same address as M((I-1)*L+1).  This ratio L is
+usually 2 for double precision, and this is the value used in the
+double precision version supplied.  If this value is incorrect, it
+needs to be changed in two places:</li>
+</ol>
+<p>(a) The integer LENRAT is DATA-loaded in Subroutines DLSODES and
+      DLSODIS to this ratio, shortly below the prologue.</p>
+<p>(b) The integer LRATIO is DATA-loaded in Subroutine CDRV to this
+      ratio, shortly below the prologue of that routine.</p>
+<p>(See comments in both places.)  If the ratio is not an integer, use
+the greatest integer not exceeding the ratio.</p>
+<ol>
+<li>
+<p>For installation of ODEPACK on a Cray computer, the source files
+supplied include compiler directives for the CFT compiler.  These have
+the form CDIR$ IVDEP and occur prior to certain loops that involve
+subscript shifts (and would otherwise not be vectorized).  These
+directives are (or should be) treated as comments by any other compiler.</p>
+</li>
+<li>
+<p>On first obtaining ODEPACK, the demonstration programs should be
+compiled and executed prior to any other use of the solvers.  In most
+cases, these exercise all of the major method options in each solver,
+and are self-checking.  (In the case of LSODPK and LSODKR, the
+demonstration programs are not self-checking, and for LSODKR only one
+major method option is used.)  In any case, the output can be compared
+with the sample output supplied, which was generated from the double
+precision version of ODEPACK on a 32-bit computer.  When comparing your
+output with that supplied, differences of 10-20% in the final values of
+the various statistical counters can be attributed to differences in
+the roundoff properties of different computer systems.</p>
+</li>
+<li>
+<p>If some subset of the whole ODEPACK collection is desired, without
+unneeded routines, the appropriate routines must be extracted
+accordingly.  The following lists give the routines needed for the
+double precision version of each solver.</p>
+<p>The DLSODE solver consists of the routines
+  DLSODE, DINTDY, DSTODE, DCFODE, DPREPJ, DSOLSY, DEWSET, DVNORM, DSRCOM,
+  DGEFA, DGESL, DGBFA, DGBSL, DAXPY, DSCAL, DDOT, IDAMAX,
+  XERRWD, XSETUN, XSETF, IXSAV, IUMACH</p>
+<p>The DLSODES solver consists of the routines
+  DLSODES, DIPREP, DPREP, JGROUP, ADJLR, CNTNZU, DINTDY, DSTODE, DCFODE,
+  DPRJS, DSOLSS, DEWSET, DVNORM, DSRCMS,
+  ODRV, MD, MDI, MDM, MDP, MDU, SRO,
+  CDRV, NROC, NSFC, NNFC, NNSC, NNTC,
+  XERRWD, XSETUN, XSETF, IXSAV, IUMACH</p>
+<p>The DLSODA solver consists of the routines
+  DLSODA, DINTDY, DSTODA, DCFODE, DPRJA, DSOLSY, DEWSET,
+  DMNORM, DFNORM, DBNORM, DSRCMA,
+  DGEFA, DGESL, DGBFA, DGBSL, DAXPY, DSCAL, DDOT, IDAMAX,
+  XERRWD, XSETUN, XSETF, IXSAV, IUMACH</p>
+<p>The DLSODAR solver consists of the routines
+  DLSODAR, DRCHEK, DROOTS, DINTDY, DSTODA, DCFODE, DPRJA, DSOLSY, DEWSET,
+  DMNORM, DFNORM, DBNORM, DSRCAR,
+  DGEFA, DGESL, DGBFA, DGBSL, DAXPY, DSCAL, DDOT, DCOPY, IDAMAX,
+  XERRWD, XSETUN, XSETF, IXSAV, IUMACH</p>
+<p>The DLSODPK solver consists of the routines
+  DLSODPK, DINTDY, DEWSET, DVNORM, DSTODPK, DCFODE, DPKSET, DSOLPK,
+  DSPIOM, DATV, DORTHOG, DHEFA, DHESL, DSPIGMR, DHEQR, DHELS,
+  DPCG, DPCGS, DATP, DUSOL, DSRCPK,
+  DAXPY, DSCAL, DCOPY, DDOT, DNRM2, IDAMAX,
+  XERRWD, XSETUN, XSETF, IXSAV, IUMACH</p>
+<p>The DLSODKR solver consists of the routines
+  DLSODKR, DRCHEK, DROOTS, DLHIN, DINTDY, DEWSET, DVNORM, DSTOKA,
+  DCFODE, DSETPK, DSOLPK, DSPIOM, DATV, DORTHOG, DHEFA, DHESL, DSPIGMR,
+  DHEQR, DHELS, DPCG, DPCGS, DATP, DUSOL, DSRCKR,
+  DAXPY, DSCAL, DCOPY, DDOT, DNRM2, IDAMAX,
+  XERRWD, XSETUN, XSETF, IXSAV, IUMACH</p>
+<p>The DLSODI solver consists of the routines
+  DLSODI, DAINVG, DINTDY, DSTODI, DCFODE, DPREPJI, DSOLSY, DEWSET,
+  DVNORM, DSRCOM,
+  DGEFA, DGESL, DGBFA, DGBSL, DAXPY, DSCAL, DDOT, IDAMAX,
+  XERRWD, XSETUN, XSETF, IXSAV, IUMACH</p>
+<p>The DLSOIBT solver consists of the routines
+  DLSOIBT, DAIGBT, DINTDY, DSTODI, DCFODE, DPJIBT, DSLSBT, DEWSET,
+  DVNORM, DSRCOM, DDECBT, DSOLBT,
+  DGEFA, DGESL, DAXPY, DSCAL, DDOT, IDAMAX,
+  XERRWD, XSETUN, XSETF, IXSAV, IUMACH</p>
+<p>The DLSODIS solver consists of the routines
+  DLSODIS, DAINVGS, DIPREPI, DPREPI, JGROUP, ADJLR, CNTNZU, DINTDY,
+  DSTODI, DCFODE, DPRJIS, DSOLSS, DEWSET, DVNORM, DSRCMS,
+  ODRV, MD, MDI, MDM, MDP, MDU, SRO,
+  CDRV, NROC, NSFC, NNFC, NNSC, NNTC,
+  XERRWD, XSETUN, XSETF, IXSAV, IUMACH</p>
+</li>
+</ol>
+        </div>
+          <div class="col-md-4">
+            <div class="card card-body bg-light">
+              <h2 class="card-title">Developer Info</h2>
+              <h4 class="card-text">Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams</h4>
+              <p class="card-text"></p>
+                <div class="text-center"><div class="btn-group" role="group">
+                    
+                    <a class="btn btn-lg btn-primary" href="https://github.com/jacobwilliams/odepack"><i class="fa fa-github fa-lg"></i></a>
+                    
+                    
+                    
+                    
+                    
+                    
+                </div></div>
+            </div>
+          </div>
+      </div>
+        <div class="row">
+          <hr>
+          <div class="col-xs-6 col-sm-4">
+            <div>
+              <h3>Source Files</h3>
+              <ul><li><a href='sourcefile/adjlr.inc.html'>adjlr.inc</a></li><li><a href='sourcefile/cdrv.inc.html'>cdrv.inc</a></li><li><a href='sourcefile/cntnzu.inc.html'>cntnzu.inc</a></li><li><a href='sourcefile/daigbt.inc.html'>daigbt.inc</a></li><li><a href='sourcefile/dainvg.inc.html'>dainvg.inc</a></li><li><a href='sourcefile/dainvgs.inc.html'>dainvgs.inc</a></li><li><a href='sourcefile/datp.inc.html'>datp.inc</a></li><li><a href='sourcefile/datv.inc.html'>datv.inc</a></li><li><a href='sourcefile/daxpy.inc.html'>daxpy.inc</a></li><li><a href='sourcefile/dbnorm.inc.html'>dbnorm.inc</a></li></ul>
+            </div>
+            <div>
+              <ul>
+                <li><a href="./lists/files.html"><em>All source files&hellip;</em></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-4">
+            <div>
+              <h3>Modules</h3>
+              <ul><li><a href='module/m_odepack.html'>M_odepack</a></li></ul>
+            </div>
+            <div>
+              <ul>
+                <li><a href="./lists/modules.html"><em>All modules&hellip;</em></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-4">
+            <div>
+              <h3>Procedures</h3>
+              <ul><li><a href='proc/adjlr~2.html'>adjlr</a></li><li><a href='proc/adjlr.html'>adjlr</a></li><li><a href='proc/cdrv~2.html'>cdrv</a></li><li><a href='proc/cdrv.html'>cdrv</a></li><li><a href='proc/cntnzu~2.html'>cntnzu</a></li><li><a href='proc/cntnzu.html'>cntnzu</a></li><li><a href='proc/daigbt~2.html'>daigbt</a></li><li><a href='proc/daigbt.html'>daigbt</a></li><li><a href='proc/dainvg~2.html'>dainvg</a></li><li><a href='proc/dainvg.html'>dainvg</a></li></ul>
+            </div>
+            <div>
+              <ul>
+                <li><a href="./lists/procedures.html"><em>All procedures&hellip;</em></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              odepack
+ was developed by Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams<br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2025-12-19 11:47 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

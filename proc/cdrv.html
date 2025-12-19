@@ -1,0 +1,831 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="ODEPACK - A Systematized Collection of ODE Solvers">
+    <meta name="author" content="Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>cdrv &ndash; odepack</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+      <link href="../css/user.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">odepack </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>cdrv
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.4% of total for procedures.">93 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/M_odepack.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/m_odepack.f90.html'>M_odepack.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/m_odepack.html'>M_odepack</a></li>
+            <li class="breadcrumb-item active" aria-current="page">cdrv</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine cdrv(N, R, C, Ic, Ia, Ja, A, B, Z, Nsp, Isp, Rsp, Esp, Path, Flag)  
+</h2>
+    
+
+    <h3 id="name">NAME</h3>
+<p>cdrv(3f) - [M_odepack ] driver for solving sparse non-symmetric
+            systems of linear equations</p>
+<h3 id="description">DESCRIPTION</h3>
+<p>driver for subroutines for solving sparse nonsymmetric systems of
+   linear equations (compressed pointer storage)</p>
+<h3 id="parameters">PARAMETERS</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">abbreviations</span><span class="w"> </span><span class="n">are</span><span class="o">--</span>
+<span class="w">   </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">variable</span>
+<span class="w">   </span><span class="n">f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">real</span><span class="w"> </span><span class="n">variable</span>
+<span class="w">   </span><span class="n">v</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">supplies</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">driver</span>
+<span class="w">   </span><span class="n">r</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">returns</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">driver</span>
+<span class="w">   </span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="n">internally</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">driver</span>
+<span class="w">   </span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">array</span>
+</code></pre></div>
+
+<h3 id="class-parameter">class - parameter</h3>
+<p>the nonzero entries of the coefficient matrix m are stored
+   row-by-row in the array a.  to identify the individual nonzero
+   entries in each row, we need to know in which column each entry
+   lies.  the column indices which correspond to the nonzero entries
+   of m are stored in the array ja.  i.e., if  a(k) = m(i,j),  then
+   ja(k) = j.  in addition, we need to know where each row starts and
+   how long it is.  the index positions in ja and a where the rows of
+   m begin are stored in the array ia.  i.e., if m(i,j) is the first
+   nonzero entry (stored) in the i-th row and a(k) = m(i,j),  then
+   ia(i) = k.  moreover, the index in ja and a of the first location
+   following the last element in the last row is stored in ia(n+1).
+   thus, the number of entries in the i-th row is given by
+   ia(i+1) - ia(i),  the nonzero entries of the i-th row are stored
+   consecutively in</p>
+<div class="codehilite"><pre><span></span><code>            a(ia(i)),  a(ia(i)+1),  ..., a(ia(i+1)-1),
+</code></pre></div>
+
+<p>and the corresponding column indices are stored consecutively in</p>
+<div class="codehilite"><pre><span></span><code>            ja(ia(i)), ja(ia(i)+1), ..., ja(ia(i+1)-1).
+</code></pre></div>
+
+<p>for example, the 5 by 5 matrix</p>
+<div class="codehilite"><pre><span></span><code>                ( 1. 0. 2. 0. 0.)
+                ( 0. 3. 0. 0. 0.)
+            m = ( 0. 4. 5. 6. 0.)
+                ( 0. 0. 0. 7. 0.)
+                ( 0. 0. 0. 8. 9.)
+</code></pre></div>
+
+<p>would be stored as</p>
+<div class="codehilite"><pre><span></span><code>               - 1  2  3  4  5  6  7  8  9
+            ---+--------------------------
+            ia - 1  3  4  7  8 10
+            ja - 1  3  2  2  3  4  4  4  5
+             a - 1. 2. 3. 4. 5. 6. 7. 8. 9.         .
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>     nv    - n     - number of variables/equations.
+     fva   - a     - nonzero entries of the coefficient matrix m, stored
+           -           by rows.
+           -           size = number of nonzero entries in m.
+     nva   - ia    - pointers to delimit the rows in a.
+           -           size = n+1.
+     nva   - ja    - column numbers corresponding to the elements of a.
+           -           size = size of a.
+     fva   - b     - right-hand side b.  b and z can the same array.
+           -           size = n.
+     fra   - z     - solution x.  b and z can be the same array.
+           -           size = n.
+</code></pre></div>
+
+<p>the rows and columns of the original matrix m can be
+   reordered (e.g., to reduce fillin or ensure numerical stability)
+   before calling the driver.  if no reordering is done, then set
+   r(i) = c(i) = ic(i) = i  for i=1,&hellip;,n.  the solution z is returned
+   in the original order.</p>
+<p>if the columns have been reordered (i.e.,  c(i).ne.i  for some
+   i), then the driver will call a subroutine (nroc) which rearranges
+   each row of ja and a, leaving the rows in the original order, but
+   placing the elements of each row in increasing order with respect
+   to the new ordering.  if  path.ne.1,  then nroc is assumed to have
+   been called already.</p>
+<div class="codehilite"><pre><span></span><code> nva   - r     - ordering of the rows of m.
+       -           size = n.
+ nva   - c     - ordering of the columns of m.
+       -           size = n.
+ nva   - ic    - inverse of the ordering of the columns of m.  i.e.,
+       -           ic(c(i)) = i  for i=1,...,n.
+       -           size = n.
+</code></pre></div>
+
+<p>the solution of the system of linear equations is divided into
+   three stages &ndash;</p>
+<div class="codehilite"><pre><span></span><code>      nsfc -- the matrix m is processed symbolically to determine where
+               fillin will occur during the numeric factorization.
+      nnfc -- the matrix m is factored numerically into the product ldu
+               of a unit lower triangular matrix l, a diagonal matrix
+               d, and a unit upper triangular matrix u, and the system
+               mx = b  is solved.
+      nnsc -- the linear system  mx = b  is solved using the ldu
+  or           factorization from nnfc.
+      nntc -- the transposed linear system  mt x = b  is solved using
+               the ldu factorization from nnf.
+</code></pre></div>
+
+<p>for several systems whose coefficient matrices have the same
+   nonzero structure, nsfc need be done only once (for the first
+   system).  then nnfc is done once for each additional system.  for
+   several systems with the same coefficient matrix, nsfc and nnfc
+   need be done only once (for the first system).  then nnsc or nntc
+   is done once for each additional right-hand side.</p>
+<div class="codehilite"><pre><span></span><code> nv    - path  - path specification.  values and their meanings are --
+       -           1  perform nroc, nsfc, and nnfc.
+       -           2  perform nnfc only  (nsfc is assumed to have been
+       -               done in a manner compatible with the storage
+       -               allocation used in the driver).
+       -           3  perform nnsc only  (nsfc and nnfc are assumed to
+       -               have been done in a manner compatible with the
+       -               storage allocation used in the driver).
+       -           4  perform nntc only  (nsfc and nnfc are assumed to
+       -               have been done in a manner compatible with the
+       -               storage allocation used in the driver).
+       -           5  perform nroc and nsfc.
+</code></pre></div>
+
+<p>various errors are detected by the driver and the individual
+   subroutines.</p>
+<div class="codehilite"><pre><span></span><code> nr    - flag  - error flag.  values and their meanings are --
+       -             0     no errors detected
+       -             n+k   null row in a  --  row = k
+       -            2n+k   duplicate entry in a  --  row = k
+       -            3n+k   insufficient storage in nsfc  --  row = k
+       -            4n+1   insufficient storage in nnfc
+       -            5n+k   null pivot  --  row = k
+       -            6n+k   insufficient storage in nsfc  --  row = k
+       -            7n+1   insufficient storage in nnfc
+       -            8n+k   zero pivot  --  row = k
+       -           10n+1   insufficient storage in cdrv
+       -           11n+1   illegal path specification
+</code></pre></div>
+
+<p>working storage is needed for the factored form of the matrix
+   m plus various temporary vectors.  the arrays isp and rsp should be
+   equivalenced.  integer storage is allocated from the beginning of
+   isp and real storage from the end of rsp.</p>
+<div class="codehilite"><pre><span></span><code>        nv    - nsp   - declared dimension of rsp.  nsp generally must
+                        be larger than  8n+2 + 2k  (where  k = (number of
+                        nonzero entries in m)).
+        nvira - isp   - integer working storage divided up into various arrays
+                        needed by the subroutines.  isp and rsp should be
+                        equivalenced.
+                             size = lratio*nsp.
+        fvira - rsp   - real working storage divided up into various arrays
+                        needed by the subroutines.  isp and rsp should be
+                        equivalenced.
+                             size = nsp.
+        nr    - esp   - if sufficient storage was available to perform the
+                        symbolic factorization (nsfc), then esp is set to
+                        the amount of excess storage provided (negative if
+                        insufficient storage was available to perform the
+                        numeric factorization (nnfc)).
+</code></pre></div>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-n~14"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>N</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-r~4"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>R</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-c~5"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>C</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ic"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Ic</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ia~7"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Ia</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ja~7"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Ja</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-a~6"></span>
+              real(kind=dp)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>A</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-b~6"></span>
+              real(kind=dp)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>B</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-z~3"></span>
+              real(kind=dp)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Z</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nsp~2"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Nsp</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-isp~3"></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Isp</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rsp"></span>
+              real(kind=dp)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Rsp</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-esp"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Esp</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-path~2"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Path</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flag~4"></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Flag</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~cdrv~~CalledByGraph Pages: 1 -->
+<svg id="proccdrvCalledByGraph" width="152pt" height="368pt"
+ viewBox="0.00 0.00 152.00 368.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~cdrv~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 364)">
+<title>proc~~cdrv~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-364 148,-364 148,4 -4,4"/>
+<!-- proc~cdrv -->
+<g id="proc~~cdrv~~CalledByGraph_node1" class="node">
+<title>proc~cdrv</title>
+<polygon fill="none" stroke="black" points="144,-192 90,-192 90,-168 144,-168 144,-192"/>
+<text text-anchor="middle" x="117" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50">cdrv</text>
+</g>
+<!-- proc~dainvgs -->
+<g id="proc~~cdrv~~CalledByGraph_node2" class="node">
+<title>proc~dainvgs</title>
+<g id="a_proc~~cdrv~~CalledByGraph_node2"><a xlink:href="../proc/dainvgs.html" xlink:title="dainvgs">
+<polygon fill="#d9534f" stroke="#d9534f" points="54,-360 0,-360 0,-336 54,-336 54,-360"/>
+<text text-anchor="middle" x="27" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dainvgs</text>
+</a>
+</g>
+</g>
+<!-- proc~dainvgs&#45;&gt;proc~cdrv -->
+<g id="proc~~cdrv~~CalledByGraph_edge1" class="edge">
+<title>proc~dainvgs&#45;&gt;proc~cdrv</title>
+<path fill="none" stroke="#000000" d="M45.36,-335.99C48.51,-333.29 51.56,-330.25 54,-327 83.52,-287.78 101.88,-232.41 110.39,-202.05"/>
+<polygon fill="#000000" stroke="#000000" points="113.85,-202.63 113.08,-192.07 107.1,-200.81 113.85,-202.63"/>
+</g>
+<!-- proc~dainvgs~2 -->
+<g id="proc~~cdrv~~CalledByGraph_node3" class="node">
+<title>proc~dainvgs~2</title>
+<g id="a_proc~~cdrv~~CalledByGraph_node3"><a xlink:href="../proc/dainvgs~2.html" xlink:title="dainvgs">
+<polygon fill="#d9534f" stroke="#d9534f" points="54,-318 0,-318 0,-294 54,-294 54,-318"/>
+<text text-anchor="middle" x="27" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dainvgs</text>
+</a>
+</g>
+</g>
+<!-- proc~dainvgs~2&#45;&gt;proc~cdrv -->
+<g id="proc~~cdrv~~CalledByGraph_edge2" class="edge">
+<title>proc~dainvgs~2&#45;&gt;proc~cdrv</title>
+<path fill="none" stroke="#000000" d="M44.75,-293.95C48.02,-291.21 51.27,-288.16 54,-285 76.44,-259.02 95.33,-223.82 106.16,-201.51"/>
+<polygon fill="#000000" stroke="#000000" points="109.43,-202.78 110.56,-192.24 103.11,-199.78 109.43,-202.78"/>
+</g>
+<!-- proc~dprep -->
+<g id="proc~~cdrv~~CalledByGraph_node4" class="node">
+<title>proc~dprep</title>
+<g id="a_proc~~cdrv~~CalledByGraph_node4"><a xlink:href="../proc/dprep.html" xlink:title="dprep">
+<polygon fill="#d9534f" stroke="#d9534f" points="54,-276 0,-276 0,-252 54,-252 54,-276"/>
+<text text-anchor="middle" x="27" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dprep</text>
+</a>
+</g>
+</g>
+<!-- proc~dprep&#45;&gt;proc~cdrv -->
+<g id="proc~~cdrv~~CalledByGraph_edge3" class="edge">
+<title>proc~dprep&#45;&gt;proc~cdrv</title>
+<path fill="none" stroke="#000000" d="M43.64,-251.85C47.11,-249.02 50.73,-245.96 54,-243 69.44,-229 85.95,-212.13 98.04,-199.36"/>
+<polygon fill="#000000" stroke="#000000" points="100.66,-201.7 104.96,-192.01 95.56,-196.9 100.66,-201.7"/>
+</g>
+<!-- proc~dprepi -->
+<g id="proc~~cdrv~~CalledByGraph_node5" class="node">
+<title>proc~dprepi</title>
+<g id="a_proc~~cdrv~~CalledByGraph_node5"><a xlink:href="../proc/dprepi.html" xlink:title="dprepi">
+<polygon fill="#d9534f" stroke="#d9534f" points="54,-234 0,-234 0,-210 54,-210 54,-234"/>
+<text text-anchor="middle" x="27" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dprepi</text>
+</a>
+</g>
+</g>
+<!-- proc~dprepi&#45;&gt;proc~cdrv -->
+<g id="proc~~cdrv~~CalledByGraph_edge4" class="edge">
+<title>proc~dprepi&#45;&gt;proc~cdrv</title>
+<path fill="none" stroke="#000000" d="M53.45,-209.85C62.21,-205.67 72.17,-200.92 81.52,-196.46"/>
+<polygon fill="#000000" stroke="#000000" points="83.09,-199.59 90.6,-192.12 80.07,-193.27 83.09,-199.59"/>
+</g>
+<!-- proc~dprepi~2 -->
+<g id="proc~~cdrv~~CalledByGraph_node6" class="node">
+<title>proc~dprepi~2</title>
+<g id="a_proc~~cdrv~~CalledByGraph_node6"><a xlink:href="../proc/dprepi~2.html" xlink:title="dprepi">
+<polygon fill="#d9534f" stroke="#d9534f" points="54,-192 0,-192 0,-168 54,-168 54,-192"/>
+<text text-anchor="middle" x="27" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dprepi</text>
+</a>
+</g>
+</g>
+<!-- proc~dprepi~2&#45;&gt;proc~cdrv -->
+<g id="proc~~cdrv~~CalledByGraph_edge5" class="edge">
+<title>proc~dprepi~2&#45;&gt;proc~cdrv</title>
+<path fill="none" stroke="#000000" d="M54.4,-180C62.39,-180 71.31,-180 79.82,-180"/>
+<polygon fill="#000000" stroke="#000000" points="79.92,-183.5 89.92,-180 79.92,-176.5 79.92,-183.5"/>
+</g>
+<!-- proc~dprep~2 -->
+<g id="proc~~cdrv~~CalledByGraph_node7" class="node">
+<title>proc~dprep~2</title>
+<g id="a_proc~~cdrv~~CalledByGraph_node7"><a xlink:href="../proc/dprep~2.html" xlink:title="dprep">
+<polygon fill="#d9534f" stroke="#d9534f" points="54,-150 0,-150 0,-126 54,-126 54,-150"/>
+<text text-anchor="middle" x="27" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dprep</text>
+</a>
+</g>
+</g>
+<!-- proc~dprep~2&#45;&gt;proc~cdrv -->
+<g id="proc~~cdrv~~CalledByGraph_edge6" class="edge">
+<title>proc~dprep~2&#45;&gt;proc~cdrv</title>
+<path fill="none" stroke="#000000" d="M53.45,-150.15C62.21,-154.33 72.17,-159.08 81.52,-163.54"/>
+<polygon fill="#000000" stroke="#000000" points="80.07,-166.73 90.6,-167.88 83.09,-160.41 80.07,-166.73"/>
+</g>
+<!-- proc~dprjis -->
+<g id="proc~~cdrv~~CalledByGraph_node8" class="node">
+<title>proc~dprjis</title>
+<g id="a_proc~~cdrv~~CalledByGraph_node8"><a xlink:href="../proc/dprjis.html" xlink:title="dprjis">
+<polygon fill="#d9534f" stroke="#d9534f" points="54,-108 0,-108 0,-84 54,-84 54,-108"/>
+<text text-anchor="middle" x="27" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dprjis</text>
+</a>
+</g>
+</g>
+<!-- proc~dprjis&#45;&gt;proc~cdrv -->
+<g id="proc~~cdrv~~CalledByGraph_edge7" class="edge">
+<title>proc~dprjis&#45;&gt;proc~cdrv</title>
+<path fill="none" stroke="#000000" d="M43.64,-108.15C47.11,-110.98 50.73,-114.04 54,-117 69.44,-131 85.95,-147.87 98.04,-160.64"/>
+<polygon fill="#000000" stroke="#000000" points="95.56,-163.1 104.96,-167.99 100.66,-158.3 95.56,-163.1"/>
+</g>
+<!-- proc~dprjs -->
+<g id="proc~~cdrv~~CalledByGraph_node9" class="node">
+<title>proc~dprjs</title>
+<g id="a_proc~~cdrv~~CalledByGraph_node9"><a xlink:href="../proc/dprjs.html" xlink:title="dprjs">
+<polygon fill="#d9534f" stroke="#d9534f" points="54,-66 0,-66 0,-42 54,-42 54,-66"/>
+<text text-anchor="middle" x="27" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dprjs</text>
+</a>
+</g>
+</g>
+<!-- proc~dprjs&#45;&gt;proc~cdrv -->
+<g id="proc~~cdrv~~CalledByGraph_edge8" class="edge">
+<title>proc~dprjs&#45;&gt;proc~cdrv</title>
+<path fill="none" stroke="#000000" d="M44.75,-66.05C48.02,-68.79 51.27,-71.84 54,-75 76.44,-100.98 95.33,-136.18 106.16,-158.49"/>
+<polygon fill="#000000" stroke="#000000" points="103.11,-160.22 110.56,-167.76 109.43,-157.22 103.11,-160.22"/>
+</g>
+<!-- proc~dsolss -->
+<g id="proc~~cdrv~~CalledByGraph_node10" class="node">
+<title>proc~dsolss</title>
+<g id="a_proc~~cdrv~~CalledByGraph_node10"><a xlink:href="../proc/dsolss.html" xlink:title="dsolss">
+<polygon fill="#d9534f" stroke="#d9534f" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dsolss</text>
+</a>
+</g>
+</g>
+<!-- proc~dsolss&#45;&gt;proc~cdrv -->
+<g id="proc~~cdrv~~CalledByGraph_edge9" class="edge">
+<title>proc~dsolss&#45;&gt;proc~cdrv</title>
+<path fill="none" stroke="#000000" d="M45.36,-24.01C48.51,-26.71 51.56,-29.75 54,-33 83.52,-72.22 101.88,-127.59 110.39,-157.95"/>
+<polygon fill="#000000" stroke="#000000" points="107.1,-159.19 113.08,-167.93 113.85,-157.37 107.1,-159.19"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              odepack
+ was developed by Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams<br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2025-12-19 11:47 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,630 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="ODEPACK - A Systematized Collection of ODE Solvers">
+    <meta name="author" content="Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>dvnorm &ndash; odepack</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+      <link href="../css/user.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">odepack </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>dvnorm
+      <small>Function</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">13 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/M_odepack.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/m_odepack.f90.html'>M_odepack.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/m_odepack.html'>M_odepack</a></li>
+            <li class="breadcrumb-item active" aria-current="page">dvnorm</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public pure function dvnorm(n, v, w)  
+</h2>
+    
+
+    <h3 id="name">NAME</h3>
+<p>dvnorm(3f) - [M_odepack] Weighted root-mean-square vector norm.</p>
+<h3 id="description">DESCRIPTION</h3>
+<p>This function routine computes the weighted root-mean-square norm
+  of the vector of length N contained in the array V, with weights
+  contained in the array W of length N:</p>
+<div class="codehilite"><pre><span></span><code>    DVNORM = SQRT( (1/N) * SUM( V(i)*W(i) )**2 )
+</code></pre></div>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-n~5"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>n</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-v~2"></span>
+              real(kind=dp),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>v</strong>(n)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-w~4"></span>
+              real(kind=dp),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>w</strong>(n)</td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <h3>Return Value
+        <small>
+          <span class="anchor" id="variable-dvnorm"></span>
+          real(kind=dp)
+        </small>
+      </h3>
+      
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~dvnorm~~CalledByGraph Pages: 1 -->
+<svg id="procdvnormCalledByGraph" width="243pt" height="636pt"
+ viewBox="0.00 0.00 243.00 636.35" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~dvnorm~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 632.35)">
+<title>proc~~dvnorm~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-632.35 239,-632.35 239,4 -4,4"/>
+<!-- proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_node1" class="node">
+<title>proc~dvnorm</title>
+<polygon fill="none" stroke="black" points="235,-338 181,-338 181,-314 235,-314 235,-338"/>
+<text text-anchor="middle" x="208" y="-323.6" font-family="Helvetica,sans-Serif" font-size="10.50">dvnorm</text>
+</g>
+<!-- proc~dlhin -->
+<g id="proc~~dvnorm~~CalledByGraph_node2" class="node">
+<title>proc~dlhin</title>
+<g id="a_proc~~dvnorm~~CalledByGraph_node2"><a xlink:href="../proc/dlhin.html" xlink:title="dlhin">
+<polygon fill="#d9534f" stroke="#d9534f" points="144.5,-608 90.5,-608 90.5,-584 144.5,-584 144.5,-608"/>
+<text text-anchor="middle" x="117.5" y="-593.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dlhin</text>
+</a>
+</g>
+</g>
+<!-- proc~dlhin&#45;&gt;proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_edge1" class="edge">
+<title>proc~dlhin&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M137.16,-583.85C140.12,-581.23 142.9,-578.26 145,-575 192.37,-501.48 203.55,-394.29 206.19,-348.31"/>
+<polygon fill="#000000" stroke="#000000" points="209.69,-348.39 206.68,-338.23 202.69,-348.05 209.69,-348.39"/>
+</g>
+<!-- proc~dlsode -->
+<g id="proc~~dvnorm~~CalledByGraph_node3" class="node">
+<title>proc~dlsode</title>
+<g id="a_proc~~dvnorm~~CalledByGraph_node3"><a xlink:href="../proc/dlsode.html" xlink:title="dlsode">
+<polygon fill="#d9534f" stroke="#d9534f" points="144.5,-524 90.5,-524 90.5,-500 144.5,-500 144.5,-524"/>
+<text text-anchor="middle" x="117.5" y="-509.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dlsode</text>
+</a>
+</g>
+</g>
+<!-- proc~dlsode&#45;&gt;proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_edge2" class="edge">
+<title>proc~dlsode&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M136.58,-499.88C139.68,-497.22 142.65,-494.23 145,-491 177.72,-446.13 195.21,-381.95 202.62,-348.4"/>
+<polygon fill="#000000" stroke="#000000" points="206.11,-348.77 204.75,-338.26 199.26,-347.33 206.11,-348.77"/>
+</g>
+<!-- proc~dlsodes -->
+<g id="proc~~dvnorm~~CalledByGraph_node4" class="node">
+<title>proc~dlsodes</title>
+<g id="a_proc~~dvnorm~~CalledByGraph_node4"><a xlink:href="../proc/dlsodes.html" xlink:title="dlsodes">
+<polygon fill="#d9534f" stroke="#d9534f" points="144.5,-482 90.5,-482 90.5,-458 144.5,-458 144.5,-482"/>
+<text text-anchor="middle" x="117.5" y="-467.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dlsodes</text>
+</a>
+</g>
+</g>
+<!-- proc~dlsodes&#45;&gt;proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_edge3" class="edge">
+<title>proc~dlsodes&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M136.03,-457.9C139.25,-455.2 142.4,-452.19 145,-449 170.63,-417.55 189.51,-373.78 199.34,-347.82"/>
+<polygon fill="#000000" stroke="#000000" points="202.72,-348.77 202.88,-338.18 196.15,-346.36 202.72,-348.77"/>
+</g>
+<!-- proc~dlsodi -->
+<g id="proc~~dvnorm~~CalledByGraph_node5" class="node">
+<title>proc~dlsodi</title>
+<g id="a_proc~~dvnorm~~CalledByGraph_node5"><a xlink:href="../proc/dlsodi.html" xlink:title="dlsodi">
+<polygon fill="#d9534f" stroke="#d9534f" points="144.5,-440 90.5,-440 90.5,-416 144.5,-416 144.5,-440"/>
+<text text-anchor="middle" x="117.5" y="-425.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dlsodi</text>
+</a>
+</g>
+</g>
+<!-- proc~dlsodi&#45;&gt;proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_edge4" class="edge">
+<title>proc~dlsodi&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M135.02,-415.95C138.46,-413.16 141.95,-410.1 145,-407 163.44,-388.25 181.35,-364 193.14,-346.93"/>
+<polygon fill="#000000" stroke="#000000" points="196.3,-348.51 199.02,-338.28 190.51,-344.58 196.3,-348.51"/>
+</g>
+<!-- proc~dlsodis -->
+<g id="proc~~dvnorm~~CalledByGraph_node6" class="node">
+<title>proc~dlsodis</title>
+<g id="a_proc~~dvnorm~~CalledByGraph_node6"><a xlink:href="../proc/dlsodis.html" xlink:title="dlsodis">
+<polygon fill="#d9534f" stroke="#d9534f" points="144.5,-398 90.5,-398 90.5,-374 144.5,-374 144.5,-398"/>
+<text text-anchor="middle" x="117.5" y="-383.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dlsodis</text>
+</a>
+</g>
+</g>
+<!-- proc~dlsodis&#45;&gt;proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_edge5" class="edge">
+<title>proc~dlsodis&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M136.41,-373.86C149.12,-365.24 166.4,-353.52 180.68,-343.84"/>
+<polygon fill="#000000" stroke="#000000" points="182.8,-346.63 189.12,-338.12 178.88,-340.84 182.8,-346.63"/>
+</g>
+<!-- proc~dlsodkr -->
+<g id="proc~~dvnorm~~CalledByGraph_node7" class="node">
+<title>proc~dlsodkr</title>
+<g id="a_proc~~dvnorm~~CalledByGraph_node7"><a xlink:href="../proc/dlsodkr.html" xlink:title="dlsodkr">
+<polygon fill="#d9534f" stroke="#d9534f" points="54,-608 0,-608 0,-584 54,-584 54,-608"/>
+<text text-anchor="middle" x="27" y="-593.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dlsodkr</text>
+</a>
+</g>
+</g>
+<!-- proc~dlsodkr&#45;&gt;proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_edge6" class="edge">
+<title>proc~dlsodkr&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M47.73,-608.04C73.07,-621.77 117.09,-639.59 145,-617 186.96,-583.04 201.73,-410.59 205.74,-348.4"/>
+<polygon fill="#000000" stroke="#000000" points="209.25,-348.32 206.37,-338.13 202.26,-347.89 209.25,-348.32"/>
+</g>
+<!-- proc~dlsodkr&#45;&gt;proc~dlhin -->
+<g id="proc~~dvnorm~~CalledByGraph_edge17" class="edge">
+<title>proc~dlsodkr&#45;&gt;proc~dlhin</title>
+<path fill="none" stroke="#000000" d="M54.07,-596C62.28,-596 71.5,-596 80.28,-596"/>
+<polygon fill="#000000" stroke="#000000" points="80.31,-599.5 90.31,-596 80.31,-592.5 80.31,-599.5"/>
+</g>
+<!-- proc~dstoka -->
+<g id="proc~~dvnorm~~CalledByGraph_node17" class="node">
+<title>proc~dstoka</title>
+<g id="a_proc~~dvnorm~~CalledByGraph_node17"><a xlink:href="../proc/dstoka.html" xlink:title="dstoka">
+<polygon fill="#d9534f" stroke="#d9534f" points="144.5,-566 90.5,-566 90.5,-542 144.5,-542 144.5,-566"/>
+<text text-anchor="middle" x="117.5" y="-551.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dstoka</text>
+</a>
+</g>
+</g>
+<!-- proc~dlsodkr&#45;&gt;proc~dstoka -->
+<g id="proc~~dvnorm~~CalledByGraph_edge19" class="edge">
+<title>proc~dlsodkr&#45;&gt;proc~dstoka</title>
+<path fill="none" stroke="#000000" d="M53.6,-583.85C62.4,-579.67 72.42,-574.92 81.82,-570.46"/>
+<polygon fill="#000000" stroke="#000000" points="83.43,-573.57 90.96,-566.12 80.42,-567.25 83.43,-573.57"/>
+</g>
+<!-- proc~dlsodpk -->
+<g id="proc~~dvnorm~~CalledByGraph_node8" class="node">
+<title>proc~dlsodpk</title>
+<g id="a_proc~~dvnorm~~CalledByGraph_node8"><a xlink:href="../proc/dlsodpk.html" xlink:title="dlsodpk">
+<polygon fill="#d9534f" stroke="#d9534f" points="54,-338 0,-338 0,-314 54,-314 54,-338"/>
+<text text-anchor="middle" x="27" y="-323.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dlsodpk</text>
+</a>
+</g>
+</g>
+<!-- proc~dlsodpk&#45;&gt;proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_edge7" class="edge">
+<title>proc~dlsodpk&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M54.24,-326.52C65.28,-326.71 78.27,-326.91 90,-327 114.44,-327.2 120.56,-327.2 145,-327 153.25,-326.93 162.12,-326.82 170.49,-326.69"/>
+<polygon fill="#000000" stroke="#000000" points="170.81,-330.18 180.76,-326.52 170.7,-323.18 170.81,-330.18"/>
+</g>
+<!-- proc~dstodpk -->
+<g id="proc~~dvnorm~~CalledByGraph_node16" class="node">
+<title>proc~dstodpk</title>
+<g id="a_proc~~dvnorm~~CalledByGraph_node16"><a xlink:href="../proc/dstodpk.html" xlink:title="dstodpk">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-318 90,-318 90,-294 145,-294 145,-318"/>
+<text text-anchor="middle" x="117.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dstodpk</text>
+</a>
+</g>
+</g>
+<!-- proc~dlsodpk&#45;&gt;proc~dstodpk -->
+<g id="proc~~dvnorm~~CalledByGraph_edge18" class="edge">
+<title>proc~dlsodpk&#45;&gt;proc~dstodpk</title>
+<path fill="none" stroke="#000000" d="M54.07,-320.11C62.21,-318.27 71.34,-316.21 80.05,-314.24"/>
+<polygon fill="#000000" stroke="#000000" points="81.02,-317.61 90,-311.99 79.47,-310.78 81.02,-317.61"/>
+</g>
+<!-- proc~dlsoibt -->
+<g id="proc~~dvnorm~~CalledByGraph_node9" class="node">
+<title>proc~dlsoibt</title>
+<g id="a_proc~~dvnorm~~CalledByGraph_node9"><a xlink:href="../proc/dlsoibt.html" xlink:title="dlsoibt">
+<polygon fill="#d9534f" stroke="#d9534f" points="144.5,-276 90.5,-276 90.5,-252 144.5,-252 144.5,-276"/>
+<text text-anchor="middle" x="117.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dlsoibt</text>
+</a>
+</g>
+</g>
+<!-- proc~dlsoibt&#45;&gt;proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_edge8" class="edge">
+<title>proc~dlsoibt&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M135.98,-276.25C148.92,-285.31 166.73,-297.79 181.29,-307.99"/>
+<polygon fill="#000000" stroke="#000000" points="179.65,-311.12 189.85,-313.99 183.67,-305.38 179.65,-311.12"/>
+</g>
+<!-- proc~dprepj -->
+<g id="proc~~dvnorm~~CalledByGraph_node10" class="node">
+<title>proc~dprepj</title>
+<g id="a_proc~~dvnorm~~CalledByGraph_node10"><a xlink:href="../proc/dprepj.html" xlink:title="dprepj">
+<polygon fill="#d9534f" stroke="#d9534f" points="144.5,-234 90.5,-234 90.5,-210 144.5,-210 144.5,-234"/>
+<text text-anchor="middle" x="117.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dprepj</text>
+</a>
+</g>
+</g>
+<!-- proc~dprepj&#45;&gt;proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_edge9" class="edge">
+<title>proc~dprepj&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M135.05,-234.03C138.48,-236.82 141.97,-239.88 145,-243 164,-262.55 182.24,-288.05 193.95,-305.6"/>
+<polygon fill="#000000" stroke="#000000" points="191.04,-307.54 199.45,-313.97 196.89,-303.69 191.04,-307.54"/>
+</g>
+<!-- proc~dprjs -->
+<g id="proc~~dvnorm~~CalledByGraph_node11" class="node">
+<title>proc~dprjs</title>
+<g id="a_proc~~dvnorm~~CalledByGraph_node11"><a xlink:href="../proc/dprjs.html" xlink:title="dprjs">
+<polygon fill="#d9534f" stroke="#d9534f" points="144.5,-192 90.5,-192 90.5,-168 144.5,-168 144.5,-192"/>
+<text text-anchor="middle" x="117.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dprjs</text>
+</a>
+</g>
+</g>
+<!-- proc~dprjs&#45;&gt;proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_edge10" class="edge">
+<title>proc~dprjs&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M136.04,-192.09C139.26,-194.79 142.41,-197.81 145,-201 170.99,-233.1 189.86,-277.89 199.57,-304.23"/>
+<polygon fill="#000000" stroke="#000000" points="196.39,-305.74 203.06,-313.98 202.99,-303.39 196.39,-305.74"/>
+</g>
+<!-- proc~dstode -->
+<g id="proc~~dvnorm~~CalledByGraph_node12" class="node">
+<title>proc~dstode</title>
+<g id="a_proc~~dvnorm~~CalledByGraph_node12"><a xlink:href="../proc/dstode.html" xlink:title="dstode">
+<polygon fill="#d9534f" stroke="#d9534f" points="144.5,-150 90.5,-150 90.5,-126 144.5,-126 144.5,-150"/>
+<text text-anchor="middle" x="117.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dstode</text>
+</a>
+</g>
+</g>
+<!-- proc~dstode&#45;&gt;proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_edge11" class="edge">
+<title>proc~dstode&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M136.59,-150.12C139.69,-152.77 142.65,-155.77 145,-159 178.12,-204.61 195.51,-269.93 202.78,-303.77"/>
+<polygon fill="#000000" stroke="#000000" points="199.35,-304.5 204.79,-313.59 206.21,-303.09 199.35,-304.5"/>
+</g>
+<!-- proc~dstode~2 -->
+<g id="proc~~dvnorm~~CalledByGraph_node13" class="node">
+<title>proc~dstode~2</title>
+<g id="a_proc~~dvnorm~~CalledByGraph_node13"><a xlink:href="../proc/dstode~2.html" xlink:title="dstode">
+<polygon fill="#d9534f" stroke="#d9534f" points="144.5,-108 90.5,-108 90.5,-84 144.5,-84 144.5,-108"/>
+<text text-anchor="middle" x="117.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dstode</text>
+</a>
+</g>
+</g>
+<!-- proc~dstode~2&#45;&gt;proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_edge12" class="edge">
+<title>proc~dstode~2&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M137.04,-108.23C140.02,-110.84 142.83,-113.79 145,-117 185.3,-176.61 199.94,-262.96 204.8,-303.45"/>
+<polygon fill="#000000" stroke="#000000" points="201.35,-304.04 205.93,-313.59 208.3,-303.27 201.35,-304.04"/>
+</g>
+<!-- proc~dstodi -->
+<g id="proc~~dvnorm~~CalledByGraph_node14" class="node">
+<title>proc~dstodi</title>
+<g id="a_proc~~dvnorm~~CalledByGraph_node14"><a xlink:href="../proc/dstodi.html" xlink:title="dstodi">
+<polygon fill="#d9534f" stroke="#d9534f" points="144.5,-66 90.5,-66 90.5,-42 144.5,-42 144.5,-66"/>
+<text text-anchor="middle" x="117.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dstodi</text>
+</a>
+</g>
+</g>
+<!-- proc~dstodi&#45;&gt;proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_edge13" class="edge">
+<title>proc~dstodi&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M137.16,-66.15C140.13,-68.77 142.9,-71.74 145,-75 192.77,-149.29 203.73,-257.67 206.25,-303.84"/>
+<polygon fill="#000000" stroke="#000000" points="202.76,-304.11 206.72,-313.94 209.75,-303.79 202.76,-304.11"/>
+</g>
+<!-- proc~dstodi~2 -->
+<g id="proc~~dvnorm~~CalledByGraph_node15" class="node">
+<title>proc~dstodi~2</title>
+<g id="a_proc~~dvnorm~~CalledByGraph_node15"><a xlink:href="../proc/dstodi~2.html" xlink:title="dstodi">
+<polygon fill="#d9534f" stroke="#d9534f" points="144.5,-24 90.5,-24 90.5,0 144.5,0 144.5,-24"/>
+<text text-anchor="middle" x="117.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dstodi</text>
+</a>
+</g>
+</g>
+<!-- proc~dstodi~2&#45;&gt;proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_edge14" class="edge">
+<title>proc~dstodi~2&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M137.25,-24.09C140.21,-26.72 142.96,-29.71 145,-33 200.1,-121.95 206.88,-252.1 207.27,-303.72"/>
+<polygon fill="#000000" stroke="#000000" points="203.77,-303.77 207.26,-313.77 210.77,-303.77 203.77,-303.77"/>
+</g>
+<!-- proc~dstodpk&#45;&gt;proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_edge15" class="edge">
+<title>proc~dstodpk&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M145.05,-312C153.18,-313.84 162.25,-315.89 170.9,-317.84"/>
+<polygon fill="#000000" stroke="#000000" points="170.25,-321.28 180.77,-320.07 171.79,-314.45 170.25,-321.28"/>
+</g>
+<!-- proc~dstoka&#45;&gt;proc~dvnorm -->
+<g id="proc~~dvnorm~~CalledByGraph_edge16" class="edge">
+<title>proc~dstoka&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M137.03,-541.77C140.01,-539.16 142.83,-536.21 145,-533 185.03,-473.97 199.8,-388.44 204.75,-348.34"/>
+<polygon fill="#000000" stroke="#000000" points="208.24,-348.62 205.9,-338.29 201.28,-347.83 208.24,-348.62"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              odepack
+ was developed by Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams<br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2025-12-19 11:47 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

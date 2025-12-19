@@ -1,0 +1,728 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="ODEPACK - A Systematized Collection of ODE Solvers">
+    <meta name="author" content="Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>datv &ndash; odepack</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+      <link href="../css/user.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">odepack </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>datv
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.3% of total for procedures.">62 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/datv.inc"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/datv.inc.html'>datv.inc</a></li>
+            <li class="breadcrumb-item active" aria-current="page">datv</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../proc/datv~2.html#variable-fac~13">fac</a>
+            <a class="list-group-item" href="../proc/datv~2.html#variable-i~87">i</a>
+            <a class="list-group-item" href="../proc/datv~2.html#variable-rnorm~2">rnorm</a>
+            <a class="list-group-item" href="../proc/datv~2.html#variable-tempn~2">tempn</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/datv~2.html#src">datv</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2> subroutine datv(Neq, Y, Savf, V, Wght, Ftem, f, psol, Z, Vtem, Wp, Iwp, Hl0, Jpre, Ier, Npsl)  
+</h2>
+    
+
+    <p>This routine computes the product</p>
+<div class="codehilite"><pre><span></span><code>  (D-inverse)*(P1-inverse)*(I - hl0*df/dy)*(P2-inverse)*(D*v)
+</code></pre></div>
+
+<p>where D is a diagonal scaling matrix, and P1 and P2 are the
+ left and right preconditioning matrices, respectively.</p>
+<p>v is assumed to have WRMS norm equal to 1.
+ The product is stored in z.  This is computed by a
+ difference quotient, a call to F, and two calls to PSOL.</p>
+<h3 id="on-entry">On entry</h3>
+<dl>
+<dt>NEQ</dt>
+<dd>
+<p>problem size, passed to F and PSOL (NEQ(1) = N).</p>
+</dd>
+<dt>Y</dt>
+<dd>
+<p>array containing current dependent variable vector.</p>
+</dd>
+<dt>SAVF</dt>
+<dd>
+<p>array containing current value of f(t,y).</p>
+</dd>
+<dt>V</dt>
+<dd>
+<p>real array of length N (can be the same array as Z).</p>
+</dd>
+<dt>WGHT</dt>
+<dd>
+<p>array of length N containing scale factors.
+ 1/WGHT(i) are the diagonal elements of the matrix D.</p>
+</dd>
+<dt>FTEM</dt>
+<dd>
+<p>work array of length N.</p>
+</dd>
+<dt>VTEM</dt>
+<dd>
+<p>work array of length N used to store the
+ unscaled version of V.</p>
+</dd>
+<dt>WP</dt>
+<dd>
+<p>real work array used by preconditioner PSOL.</p>
+</dd>
+<dt>IWP</dt>
+<dd>
+<p>integer work array used by preconditioner PSOL.</p>
+</dd>
+<dt>HL0</dt>
+<dd>
+<p>current value of (step size h) * (coefficient l0).</p>
+</dd>
+<dt>JPRE</dt>
+<dd>
+<p>preconditioner type flag.</p>
+</dd>
+</dl>
+<h3 id="on-return">On return</h3>
+<dl>
+<dt>Z</dt>
+<dd>
+<p>array of length N containing desired scaled
+ matrix-vector product.</p>
+</dd>
+<dt>IER</dt>
+<dd>
+<p>error flag from PSOL.</p>
+</dd>
+<dt>NPSL</dt>
+<dd>
+<p>the number of calls to PSOL.</p>
+</dd>
+</dl>
+<p>In addition, this routine uses the Common variables TN, N, NFE.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-neq~52"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Neq</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-y~53"></span>
+              real(kind=dp)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Y</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-savf~26"></span>
+              real(kind=dp)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Savf</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-v~13"></span>
+              real(kind=dp),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>V</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-wght~10"></span>
+              real(kind=dp),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Wght</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ftem~10"></span>
+              real(kind=dp)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Ftem</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-f~35"></span>
+              real
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>f</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-psol~17"></span>
+              real
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>psol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-z~9"></span>
+              real(kind=dp),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Z</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-vtem~2"></span>
+              real(kind=dp),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Vtem</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-wp~9"></span>
+              real(kind=dp),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Wp</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iwp~9"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Iwp</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-hl0~10"></span>
+              real(kind=dp)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Hl0</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-jpre~7"></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Jpre</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ier~9"></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Ier</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-npsl~9"></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Npsl</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+
+
+    <section>    
+      <h2>Variables</h2>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fac~13"></span>
+              real(kind=dp),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fac</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-i~87"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>i</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rnorm~2"></span>
+              real(kind=dp),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rnorm</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tempn~2"></span>
+              real(kind=dp),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tempn</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    </section>
+    <br>
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="k">subroutine </span><span class="n">datv</span><span class="p">(</span><span class="n">Neq</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Savf</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">Wght</span><span class="p">,</span><span class="n">Ftem</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">psol</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">Vtem</span><span class="p">,</span><span class="n">Wp</span><span class="p">,</span><span class="n">Iwp</span><span class="p">,</span><span class="n">Hl0</span><span class="p">,</span><span class="n">Jpre</span><span class="p">,</span><span class="n">Ier</span><span class="p">,</span><span class="n">Npsl</span><span class="p">)</span>
+
+<span class="kt">integer</span><span class="w">                     </span><span class="kd">::</span><span class="w"> </span><span class="n">Neq</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">)</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">)</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">Savf</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">V</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">Wght</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">)</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">Ftem</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">external</span><span class="w">                    </span><span class="kd">::</span><span class="w"> </span><span class="n">f</span>
+<span class="k">external</span><span class="w">                    </span><span class="kd">::</span><span class="w"> </span><span class="n">psol</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Z</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Vtem</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Wp</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">integer</span><span class="w">                     </span><span class="kd">::</span><span class="w"> </span><span class="n">Iwp</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">)</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">Hl0</span>
+<span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">      </span><span class="kd">::</span><span class="w"> </span><span class="n">Jpre</span>
+<span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">      </span><span class="kd">::</span><span class="w"> </span><span class="n">Ier</span>
+<span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">      </span><span class="kd">::</span><span class="w"> </span><span class="n">Npsl</span>
+
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fac</span><span class="p">,</span><span class="w"> </span><span class="n">rnorm</span><span class="p">,</span><span class="w"> </span><span class="n">tempn</span>
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+
+<span class="w">   </span><span class="c">!  Set VTEM = D * V.</span>
+<span class="w">   </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">dls1</span><span class="p">%</span><span class="n">n</span>
+<span class="w">      </span><span class="n">Vtem</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">/</span><span class="n">Wght</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">   </span><span class="k">enddo</span>
+
+<span class="k">   </span><span class="n">Ier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">Jpre</span><span class="o">&gt;=</span><span class="mi">2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+
+<span class="w">      </span><span class="c">!  JPRE = 2 or 3.  Apply inverse of right preconditioner to VTEM.</span>
+<span class="w">      </span><span class="k">call </span><span class="n">psol</span><span class="p">(</span><span class="n">Neq</span><span class="p">,</span><span class="n">dls1</span><span class="p">%</span><span class="n">tn</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Savf</span><span class="p">,</span><span class="n">Ftem</span><span class="p">,</span><span class="n">Hl0</span><span class="p">,</span><span class="n">Wp</span><span class="p">,</span><span class="n">Iwp</span><span class="p">,</span><span class="n">Vtem</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">Ier</span><span class="p">)</span>
+<span class="w">      </span><span class="n">Npsl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Npsl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">Ier</span><span class="o">/=</span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
+
+<span class="w">      </span><span class="c">!  Calculate L-2 norm of (D-inverse) * VTEM.</span>
+<span class="w">      </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">dls1</span><span class="p">%</span><span class="n">n</span>
+<span class="w">         </span><span class="n">Z</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vtem</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">Wght</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">      </span><span class="k">enddo</span>
+
+<span class="w">      </span><span class="c">!X!tempn = dnrm2(dls1%n,Z,1)</span>
+<span class="w">      </span><span class="n">tempn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">norm2</span><span class="p">(</span><span class="n">Z</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">dls1</span><span class="p">%</span><span class="n">n</span><span class="p">))</span><span class="w">  </span><span class="c">! Ref: opkd-sum.txt lines 229-237, Fortran 2008 intrinsic</span>
+<span class="w">      </span><span class="n">rnorm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0D0</span><span class="o">/</span><span class="n">tempn</span>
+
+<span class="w">      </span><span class="c">!  Save Y in Z and increment Y by VTEM/norm.</span>
+<span class="w">      </span><span class="c">!X!call dcopy(dls1%n,Y,1,Z,1)</span>
+<span class="w">      </span><span class="n">Z</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">dls1</span><span class="p">%</span><span class="n">n</span><span class="p">)</span><span class="o">=</span><span class="n">Y</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">dls1</span><span class="p">%</span><span class="n">n</span><span class="p">)</span><span class="c">!X!</span>
+
+<span class="w">      </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">dls1</span><span class="p">%</span><span class="n">n</span>
+<span class="w">         </span><span class="n">Y</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Z</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Vtem</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">rnorm</span>
+<span class="w">      </span><span class="k">enddo</span>
+
+<span class="k">      </span><span class="n">fac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Hl0</span><span class="o">*</span><span class="n">tempn</span>
+<span class="w">   </span><span class="k">else</span>
+
+<span class="w">      </span><span class="c">!  JPRE = 0 or 1.  Save Y in Z and increment Y by VTEM.</span>
+<span class="w">      </span><span class="c">!X!call dcopy(dls1%n,Y,1,Z,1)</span>
+<span class="w">      </span><span class="n">Z</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">dls1</span><span class="p">%</span><span class="n">n</span><span class="p">)</span><span class="o">=</span><span class="n">Y</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">dls1</span><span class="p">%</span><span class="n">n</span><span class="p">)</span><span class="c">!X!</span>
+
+<span class="w">      </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">dls1</span><span class="p">%</span><span class="n">n</span>
+<span class="w">         </span><span class="n">Y</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Z</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Vtem</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">      </span><span class="k">enddo</span>
+
+<span class="k">      </span><span class="n">fac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Hl0</span>
+<span class="w">   </span><span class="k">endif</span>
+
+<span class="w">   </span><span class="c">!  For all JPRE, call F with incremented Y argument, and restore Y.</span>
+<span class="w">   </span><span class="k">call </span><span class="n">f</span><span class="p">(</span><span class="n">Neq</span><span class="p">,</span><span class="n">dls1</span><span class="p">%</span><span class="n">tn</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Ftem</span><span class="p">)</span>
+<span class="w">   </span><span class="n">dls1</span><span class="p">%</span><span class="n">nfe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dls1</span><span class="p">%</span><span class="n">nfe</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">   </span><span class="c">!X!call dcopy(dls1%n,Z,1,Y,1)</span>
+<span class="w">   </span><span class="n">Y</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">dls1</span><span class="p">%</span><span class="n">n</span><span class="p">)</span><span class="o">=</span><span class="n">Z</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">dls1</span><span class="p">%</span><span class="n">n</span><span class="p">)</span><span class="c">!X!</span>
+
+<span class="w">   </span><span class="c">!  Set Z = (identity - hl0*Jacobian) * VTEM, using difference quotient.</span>
+<span class="w">   </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">dls1</span><span class="p">%</span><span class="n">n</span>
+<span class="w">      </span><span class="n">Z</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ftem</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Savf</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">   </span><span class="k">enddo</span>
+<span class="k">   do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">dls1</span><span class="p">%</span><span class="n">n</span>
+<span class="w">      </span><span class="n">Z</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vtem</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">fac</span><span class="o">*</span><span class="n">Z</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">   </span><span class="k">enddo</span>
+
+<span class="w">   </span><span class="c">!  Apply inverse of left preconditioner to Z, if nontrivial.</span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">Jpre</span><span class="o">/=</span><span class="mi">0</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">Jpre</span><span class="o">/=</span><span class="mi">2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      call </span><span class="n">psol</span><span class="p">(</span><span class="n">Neq</span><span class="p">,</span><span class="n">dls1</span><span class="p">%</span><span class="n">tn</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Savf</span><span class="p">,</span><span class="n">Ftem</span><span class="p">,</span><span class="n">Hl0</span><span class="p">,</span><span class="n">Wp</span><span class="p">,</span><span class="n">Iwp</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">Ier</span><span class="p">)</span>
+<span class="w">      </span><span class="n">Npsl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Npsl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">Ier</span><span class="o">/=</span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
+<span class="k">   endif</span>
+
+<span class="w">   </span><span class="c">!  Apply D-inverse to Z and return.</span>
+<span class="w">   </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">dls1</span><span class="p">%</span><span class="n">n</span>
+<span class="w">      </span><span class="n">Z</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Z</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">Wght</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">   </span><span class="k">enddo</span>
+
+<span class="k">end subroutine </span><span class="n">datv</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              odepack
+ was developed by Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams<br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2025-12-19 11:47 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

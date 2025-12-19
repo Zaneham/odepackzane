@@ -1,0 +1,862 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="ODEPACK - A Systematized Collection of ODE Solvers">
+    <meta name="author" content="Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>dstodpk &ndash; odepack</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+      <link href="../css/user.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">odepack </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>dstodpk
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 1.6% of total for procedures.">365 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/M_odepack.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/m_odepack.f90.html'>M_odepack.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/m_odepack.html'>M_odepack</a></li>
+            <li class="breadcrumb-item active" aria-current="page">dstodpk</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine dstodpk(Neq, Y, Yh, Nyh, Yh1, Ewt, Savf, Savx, Acor, Wm, Iwm, f, jac, psol)  
+</h2>
+    
+
+    <p>DSTODPK performs one step of the integration of an initial value
+problem for a system of Ordinary Differential Equations.</p>
+<p>The following changes were made to generate Subroutine DSTODPK
+from Subroutine DSTODE:</p>
+<ol>
+<li>The array SAVX was added to the call sequence.</li>
+<li>PJAC and SLVS were replaced by PSOL in the call sequence.</li>
+<li>The Common block /DLPK01/ was added for communication.</li>
+<li>The test constant EPCON is loaded into Common below statement
+   numbers 125 and 155, and used below statement 400.</li>
+<li>The Newton iteration counter MNEWT is set below 220 and 400.</li>
+<li>The call to PJAC was replaced with a call to DPKSET (fixed name),
+   with a longer call sequence, called depending on JACFLG.</li>
+<li>The corrector residual is stored in SAVX (not Y) at 360,
+   and the solution vector is in SAVX in the 380 loop.</li>
+<li>SLVS was renamed DSOLPK and includes NEQ, SAVX, EWT, F, and JAC.
+   SAVX was added because DSOLPK now needs Y and SAVF undisturbed.</li>
+<li>The nonlinear convergence failure count NCFN is set at 430.</li>
+</ol>
+<p>Note: DSTODPK is independent of the value of the iteration method
+indicator MITER, when this is .ne. 0, and hence is independent
+of the type of chord method used, or the Jacobian structure.</p>
+<p>Communication with DSTODPK is done with the following variables:</p>
+<dl>
+<dt>NEQ</dt>
+<dd>
+<p>integer array containing problem size in NEQ(1), and
+passed as the NEQ argument in all calls to F and JAC.</p>
+</dd>
+<dt>Y</dt>
+<dd>
+<p>an array of length .ge. N used as the Y argument in
+all calls to F and JAC.</p>
+</dd>
+<dt>YH</dt>
+<dd>
+<p>an NYH by LMAX array containing the dependent variables
+and their approximate scaled derivatives, where
+LMAX = MAXORD + 1.  YH(i,j+1) contains the approximate
+j-th derivative of y(i), scaled by H**j/factorial(j)
+(j = 0,1,&hellip;,NQ).  On entry for the first step, the first
+two columns of YH must be set from the initial values.</p>
+</dd>
+<dt>NYH</dt>
+<dd>
+<p>a constant integer .ge. N, the first dimension of YH.</p>
+</dd>
+<dt>YH1</dt>
+<dd>
+<p>a one-dimensional array occupying the same space as YH.</p>
+</dd>
+<dt>EWT</dt>
+<dd>
+<p>an array of length N containing multiplicative weights
+for local error measurements.  Local errors in y(i) are
+compared to 1.0/EWT(i) in various error tests.</p>
+</dd>
+<dt>SAVF</dt>
+<dd>
+<p>an array of working storage, of length N.
+Also used for input of YH(*,MAXORD+2) when JSTART = -1
+and MAXORD .lt. the current order NQ.</p>
+</dd>
+<dt>SAVX</dt>
+<dd>
+<p>an array of working storage, of length N.</p>
+</dd>
+<dt>ACOR</dt>
+<dd>
+<p>a work array of length N, used for the accumulated
+corrections.  On a successful return, ACOR(i) contains
+the estimated one-step local error in y(i).</p>
+</dd>
+<dt>WM,IWM</dt>
+<dd>
+<p>real and integer work arrays associated with matrix
+operations in chord iteration (MITER .ne. 0).</p>
+</dd>
+<dt>CCMAX</dt>
+<dd>
+<p>maximum relative change in H*EL0 before DPKSET is called.</p>
+</dd>
+<dt>H</dt>
+<dd>
+<p>the step size to be attempted on the next step.
+H is altered by the error control algorithm during the
+problem.  H can be either positive or negative, but its
+sign must remain constant throughout the problem.</p>
+</dd>
+<dt>HMIN</dt>
+<dd>
+<p>the minimum absolute value of the step size H to be used.</p>
+</dd>
+<dt>HMXI</dt>
+<dd>
+<p>inverse of the maximum absolute value of H to be used.
+HMXI = 0.0 is allowed and corresponds to an infinite HMAX.
+HMIN and HMXI may be changed at any time, but will not
+take effect until the next change of H is considered.</p>
+</dd>
+<dt>TN</dt>
+<dd>
+<p>the independent variable. TN is updated on each step taken.</p>
+</dd>
+<dt>JSTART</dt>
+<dd>
+<p>an integer used for input only, with the following
+values and meanings:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">     </span><span class="mi">0</span><span class="w">  </span><span class="nv">perform</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">first</span><span class="w"> </span><span class="nv">step</span>.
+<span class="w"> </span>.<span class="nv">gt</span>.<span class="mi">0</span><span class="w">  </span><span class="nv">take</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">new</span><span class="w"> </span><span class="nv">step</span><span class="w"> </span><span class="nv">continuing</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">last</span>.
+<span class="w">    </span><span class="o">-</span><span class="mi">1</span><span class="w">  </span><span class="nv">take</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="k">next</span><span class="w"> </span><span class="nv">step</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">new</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">H</span>,<span class="w"> </span><span class="nv">MAXORD</span>,
+<span class="w">        </span><span class="nv">N</span>,<span class="w"> </span><span class="nv">METH</span>,<span class="w"> </span><span class="nv">MITER</span>,<span class="w"> </span><span class="nv">and</span><span class="o">/</span><span class="nv">or</span><span class="w"> </span><span class="nv">matrix</span><span class="w"> </span><span class="nv">parameters</span>.
+<span class="w">    </span><span class="o">-</span><span class="mi">2</span><span class="w">  </span><span class="nv">take</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="k">next</span><span class="w"> </span><span class="nv">step</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">new</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">H</span>,
+<span class="w">        </span><span class="nv">but</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">other</span><span class="w"> </span><span class="nv">inputs</span><span class="w"> </span><span class="nv">unchanged</span>.
+</code></pre></div>
+
+</dd>
+</dl>
+<p>On return, JSTART is set to 1 to facilitate continuation.</p>
+<dl>
+<dt>KFLAG</dt>
+<dd>
+<p>a completion code with the following meanings:</p>
+<div class="codehilite"><pre><span></span><code>     0  the step was succesful.
+    -1  the requested error could not be achieved.
+    -2  corrector convergence could not be achieved.
+    -3  fatal error in DPKSET or DSOLPK.
+</code></pre></div>
+
+</dd>
+</dl>
+<p>A return with KFLAG = -1 or -2 means either
+ABS(H) = HMIN or 10 consecutive failures occurred.
+On a return with KFLAG negative, the values of TN and
+the YH array are as of the beginning of the last
+step, and H is the last step size attempted.</p>
+<dl>
+<dt>MAXORD</dt>
+<dd>
+<p>the maximum order of integration method to be allowed.</p>
+</dd>
+<dt>MAXCOR</dt>
+<dd>
+<p>the maximum number of corrector iterations allowed.</p>
+</dd>
+<dt>MSBP</dt>
+<dd>
+<p>maximum number of steps between DPKSET calls (MITER .gt. 0).</p>
+</dd>
+<dt>MXNCF</dt>
+<dd>
+<p>maximum number of convergence failures allowed.</p>
+</dd>
+<dt>METH/MITER</dt>
+<dd>
+<p>the method flags.  See description in driver.</p>
+</dd>
+<dt>N</dt>
+<dd>
+<p>the number of first-order differential equations.</p>
+</dd>
+</dl>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-neq~25"></span>
+              integer,
+            </td>
+<td></td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>Neq</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-y~26"></span>
+              real(kind=dp),
+            </td>
+<td></td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>Y</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-yh~11"></span>
+              real(kind=dp),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              dimension(Nyh,*)
+            </td>
+            <td>::</td>
+            <td><strong>Yh</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nyh~11"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Nyh</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-yh1~3"></span>
+              real(kind=dp),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>Yh1</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ewt~14"></span>
+              real(kind=dp),
+            </td>
+<td></td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>Ewt</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-savf~16"></span>
+              real(kind=dp),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>Savf</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-savx~2"></span>
+              real(kind=dp),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>Savx</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-acor~3"></span>
+              real(kind=dp),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>Acor</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-wm~12"></span>
+              real(kind=dp),
+            </td>
+<td></td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>Wm</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iwm~12"></span>
+              integer,
+            </td>
+<td></td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>Iwm</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-f~17"></span>
+              real
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>f</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-jac~13"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>jac</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-psol~9"></span>
+              real
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>psol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~dstodpk~~CallsGraph Pages: 1 -->
+<svg id="procdstodpkCallsGraph" width="153pt" height="158pt"
+ viewBox="0.00 0.00 153.00 158.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~dstodpk~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 154)">
+<title>proc~~dstodpk~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-154 149,-154 149,4 -4,4"/>
+<!-- proc~dstodpk -->
+<g id="proc~~dstodpk~~CallsGraph_node1" class="node">
+<title>proc~dstodpk</title>
+<polygon fill="none" stroke="black" points="55,-87 0,-87 0,-63 55,-63 55,-87"/>
+<text text-anchor="middle" x="27.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">dstodpk</text>
+</g>
+<!-- proc~daxpy -->
+<g id="proc~~dstodpk~~CallsGraph_node2" class="node">
+<title>proc~daxpy</title>
+<g id="a_proc~~dstodpk~~CallsGraph_node2"><a xlink:href="../proc/daxpy.html" xlink:title="daxpy">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-150 91,-150 91,-126 145,-126 145,-150"/>
+<text text-anchor="middle" x="118" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">daxpy</text>
+</a>
+</g>
+</g>
+<!-- proc~dstodpk&#45;&gt;proc~daxpy -->
+<g id="proc~~dstodpk~~CallsGraph_edge1" class="edge">
+<title>proc~dstodpk&#45;&gt;proc~daxpy</title>
+<path fill="none" stroke="#000000" d="M45.56,-87.15C58.66,-96.47 76.95,-109.49 91.75,-120.02"/>
+<polygon fill="#000000" stroke="#000000" points="89.81,-122.94 99.99,-125.89 93.87,-117.24 89.81,-122.94"/>
+</g>
+<!-- proc~dcfode -->
+<g id="proc~~dstodpk~~CallsGraph_node3" class="node">
+<title>proc~dcfode</title>
+<g id="a_proc~~dstodpk~~CallsGraph_node3"><a xlink:href="../proc/dcfode.html" xlink:title="dcfode">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-108 91,-108 91,-84 145,-84 145,-108"/>
+<text text-anchor="middle" x="118" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dcfode</text>
+</a>
+</g>
+</g>
+<!-- proc~dstodpk&#45;&gt;proc~dcfode -->
+<g id="proc~~dstodpk~~CallsGraph_edge2" class="edge">
+<title>proc~dstodpk&#45;&gt;proc~dcfode</title>
+<path fill="none" stroke="#000000" d="M55.05,-81.3C63.18,-83.23 72.25,-85.38 80.9,-87.43"/>
+<polygon fill="#000000" stroke="#000000" points="80.23,-90.87 90.77,-89.78 81.85,-84.06 80.23,-90.87"/>
+</g>
+<!-- proc~dscal -->
+<g id="proc~~dstodpk~~CallsGraph_node4" class="node">
+<title>proc~dscal</title>
+<g id="a_proc~~dstodpk~~CallsGraph_node4"><a xlink:href="../proc/dscal.html" xlink:title="dscal">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-66 91,-66 91,-42 145,-42 145,-66"/>
+<text text-anchor="middle" x="118" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dscal</text>
+</a>
+</g>
+</g>
+<!-- proc~dstodpk&#45;&gt;proc~dscal -->
+<g id="proc~~dstodpk~~CallsGraph_edge3" class="edge">
+<title>proc~dstodpk&#45;&gt;proc~dscal</title>
+<path fill="none" stroke="#000000" d="M55.05,-68.7C63.18,-66.77 72.25,-64.62 80.9,-62.57"/>
+<polygon fill="#000000" stroke="#000000" points="81.85,-65.94 90.77,-60.22 80.23,-59.13 81.85,-65.94"/>
+</g>
+<!-- proc~dvnorm -->
+<g id="proc~~dstodpk~~CallsGraph_node5" class="node">
+<title>proc~dvnorm</title>
+<g id="a_proc~~dstodpk~~CallsGraph_node5"><a xlink:href="../proc/dvnorm.html" xlink:title="dvnorm">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="145,-24 91,-24 91,0 145,0 145,-24"/>
+<text text-anchor="middle" x="118" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dvnorm</text>
+</a>
+</g>
+</g>
+<!-- proc~dstodpk&#45;&gt;proc~dvnorm -->
+<g id="proc~~dstodpk~~CallsGraph_edge4" class="edge">
+<title>proc~dstodpk&#45;&gt;proc~dvnorm</title>
+<path fill="none" stroke="#000000" d="M45.56,-62.85C58.66,-53.53 76.95,-40.51 91.75,-29.98"/>
+<polygon fill="#000000" stroke="#000000" points="93.87,-32.76 99.99,-24.11 89.81,-27.06 93.87,-32.76"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~dstodpk~~CalledByGraph Pages: 1 -->
+<svg id="procdstodpkCalledByGraph" width="153pt" height="32pt"
+ viewBox="0.00 0.00 153.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~dstodpk~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~dstodpk~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 149,-28 149,4 -4,4"/>
+<!-- proc~dstodpk -->
+<g id="proc~~dstodpk~~CalledByGraph_node1" class="node">
+<title>proc~dstodpk</title>
+<polygon fill="none" stroke="black" points="145,-24 90,-24 90,0 145,0 145,-24"/>
+<text text-anchor="middle" x="117.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">dstodpk</text>
+</g>
+<!-- proc~dlsodpk -->
+<g id="proc~~dstodpk~~CalledByGraph_node2" class="node">
+<title>proc~dlsodpk</title>
+<g id="a_proc~~dstodpk~~CalledByGraph_node2"><a xlink:href="../proc/dlsodpk.html" xlink:title="dlsodpk">
+<polygon fill="#d9534f" stroke="#d9534f" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dlsodpk</text>
+</a>
+</g>
+</g>
+<!-- proc~dlsodpk&#45;&gt;proc~dstodpk -->
+<g id="proc~~dstodpk~~CalledByGraph_edge1" class="edge">
+<title>proc~dlsodpk&#45;&gt;proc~dstodpk</title>
+<path fill="none" stroke="#000000" d="M54.07,-12C62.12,-12 71.14,-12 79.76,-12"/>
+<polygon fill="#000000" stroke="#000000" points="80,-15.5 90,-12 80,-8.5 80,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              odepack
+ was developed by Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams<br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2025-12-19 11:47 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

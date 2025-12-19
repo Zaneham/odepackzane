@@ -1,0 +1,1372 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="ODEPACK - A Systematized Collection of ODE Solvers">
+    <meta name="author" content="Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>dprep &ndash; odepack</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+      <link href="../css/user.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">odepack </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>dprep
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 1.1% of total for procedures.">248 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/M_odepack.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/m_odepack.f90.html'>M_odepack.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">dprep</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../proc/dprep.html#variable-dp~3">dp</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-dq">dq</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-dyj">dyj</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-erwt">erwt</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-fac~9">fac</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-i~63">i</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-ibr">ibr</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-ier~16">ier</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-ipil">ipil</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-ipiu">ipiu</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-iptt1">iptt1</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-iptt2">iptt2</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-j~32">j</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-jfound">jfound</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-k~26">k</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-kmax~6">kmax</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-kmin~5">kmin</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-knew">knew</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-ldif">ldif</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-lenigp">lenigp</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-liwk">liwk</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-maxg">maxg</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-np1~4">np1</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-nzsut">nzsut</a>
+            <a class="list-group-item" href="../proc/dprep.html#variable-yj~4">yj</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../proc/dprep.html#proc-wrapup400">wrapup400</a>
+            <a class="list-group-item" href="../proc/dprep.html#proc-wrapup500">wrapup500</a>
+            <a class="list-group-item" href="../proc/dprep.html#proc-wrapup600">wrapup600</a>
+            <a class="list-group-item" href="../proc/dprep.html#proc-wrapup700">wrapup700</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2> subroutine dprep(Neq, Y, Yh, Savf, Ewt, Ftem, Ia, Ja, Wk, Iwk, Ipper, f, jac)  
+</h2>
+        <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='../module/m_odepack.html'>M_odepack</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~dprep~~UsesGraph Pages: 1 -->
+<svg id="procdprepUsesGraph" width="171pt" height="32pt"
+ viewBox="0.00 0.00 171.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~dprep~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~dprep~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 167,-28 167,4 -4,4"/>
+<!-- proc~dprep -->
+<g id="proc~~dprep~~UsesGraph_node1" class="node">
+<title>proc~dprep</title>
+<polygon fill="none" stroke="black" points="163,-24 109,-24 109,0 163,0 163,-24"/>
+<text text-anchor="middle" x="136" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">dprep</text>
+</g>
+<!-- module~m_odepack -->
+<g id="proc~~dprep~~UsesGraph_node2" class="node">
+<title>module~m_odepack</title>
+<g id="a_proc~~dprep~~UsesGraph_node2"><a xlink:href="../module/m_odepack.html" xlink:title="M_odepack">
+<polygon fill="#337ab7" stroke="#337ab7" points="73,-24 0,-24 0,0 73,0 73,-24"/>
+<text text-anchor="middle" x="36.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">M_odepack</text>
+</a>
+</g>
+</g>
+<!-- proc~dprep&#45;&gt;module~m_odepack -->
+<g id="proc~~dprep~~UsesGraph_edge1" class="edge">
+<title>proc~dprep&#45;&gt;module~m_odepack</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M108.87,-12C101.01,-12 92.13,-12 83.38,-12"/>
+<polygon fill="#000000" stroke="#000000" points="83.23,-8.5 73.23,-12 83.23,-15.5 83.23,-8.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <p>This routine performs preprocessing related to the sparse linear
+systems that must be solved if MITER = 1 or 2.</p>
+<p>The operations that are performed here are:</p>
+<ul>
+<li>compute sparseness structure of Jacobian according to MOSS,</li>
+<li>compute grouping of column indices (MITER = 2),</li>
+<li>compute a new ordering of rows and columns of the matrix,</li>
+<li>reorder JA corresponding to the new ordering,</li>
+<li>perform a symbolic LU factorization of the matrix, and</li>
+<li>set pointers for segments of the IWK/WK array.</li>
+</ul>
+<p>In addition to variables described previously, DPREP uses the
+following for communication:</p>
+<dl>
+<dt>YH</dt>
+<dd>
+<p>the history array.  Only the first column, containing the
+current Y vector, is used.  Used only if MOSS .ne. 0.</p>
+</dd>
+<dt>SAVF</dt>
+<dd>
+<p>a work array of length NEQ, used only if MOSS .ne. 0.</p>
+</dd>
+<dt>EWT</dt>
+<dd>
+<p>array of length NEQ containing (inverted) error weights.
+Used only if MOSS = 2 or if ISTATE = MOSS = 1.</p>
+</dd>
+<dt>FTEM</dt>
+<dd>
+<p>a work array of length NEQ, identical to ACOR in the driver,
+used only if MOSS = 2.</p>
+</dd>
+<dt>WK</dt>
+<dd>
+<p>a real work array of length LENWK, identical to WM in
+the driver.</p>
+</dd>
+<dt>IWK</dt>
+<dd>
+<p>integer work array, assumed to occupy the same space as WK.</p>
+</dd>
+<dt>LENWK</dt>
+<dd>
+<p>the length of the work arrays WK and IWK.</p>
+</dd>
+<dt>ISTATC</dt>
+<dd>
+<p>a copy of the driver input argument ISTATE (= 1 on the
+first call, = 3 on a continuation call).</p>
+</dd>
+<dt>IYS</dt>
+<dd>
+<p>flag value from ODRV or CDRV.</p>
+</dd>
+<dt>IPPER</dt>
+<dd>
+<p>output error flag with the following values and meanings:
+     0  no error.
+    -1  insufficient storage for internal structure pointers.
+    -2  insufficient storage for JGROUP.
+    -3  insufficient storage for ODRV.
+    -4  other error flag from ODRV (should never occur).
+    -5  insufficient storage for CDRV.
+    -6  other error flag from CDRV.</p>
+</dd>
+</dl>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-neq~35"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Neq</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-y~36"></span>
+              real(kind=dp),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Y</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-yh~12"></span>
+              real(kind=dp),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Yh</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-savf~17"></span>
+              real(kind=dp),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Savf</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ewt~15"></span>
+              real(kind=dp),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Ewt</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ftem~7"></span>
+              real(kind=dp)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Ftem</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ia~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Ia</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ja~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Ja</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-wk~10"></span>
+              real(kind=dp)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Wk</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iwk~4"></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Iwk</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ipper"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Ipper</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-f~24"></span>
+              real
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>f</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-jac~23"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>jac</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~dprep~~CallsGraph Pages: 1 -->
+<svg id="procdprepCallsGraph" width="261pt" height="326pt"
+ viewBox="0.00 0.00 261.00 326.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~dprep~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 322)">
+<title>proc~~dprep~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-322 257,-322 257,4 -4,4"/>
+<!-- proc~dprep -->
+<g id="proc~~dprep~~CallsGraph_node1" class="node">
+<title>proc~dprep</title>
+<polygon fill="none" stroke="black" points="54,-171 0,-171 0,-147 54,-147 54,-171"/>
+<text text-anchor="middle" x="27" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50">dprep</text>
+</g>
+<!-- none~wrapup400 -->
+<g id="proc~~dprep~~CallsGraph_node2" class="node">
+<title>none~wrapup400</title>
+<g id="a_proc~~dprep~~CallsGraph_node2"><a xlink:href="../proc/dprep.html#proc-wrapup400" xlink:title="wrapup400">
+<polygon fill="#d9534f" stroke="#d9534f" points="163,-318 90,-318 90,-294 163,-294 163,-318"/>
+<text text-anchor="middle" x="126.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">wrapup400</text>
+</a>
+</g>
+</g>
+<!-- proc~dprep&#45;&gt;none~wrapup400 -->
+<g id="proc~~dprep~~CallsGraph_edge1" class="edge">
+<title>proc~dprep&#45;&gt;none~wrapup400</title>
+<path fill="none" stroke="#000000" d="M31.38,-171.11C38.63,-195.27 57.7,-250.12 90,-285 90.88,-285.95 91.8,-286.86 92.77,-287.75"/>
+<polygon fill="#000000" stroke="#000000" points="90.75,-290.61 100.8,-293.96 95.03,-285.07 90.75,-290.61"/>
+</g>
+<!-- none~wrapup500 -->
+<g id="proc~~dprep~~CallsGraph_node3" class="node">
+<title>none~wrapup500</title>
+<g id="a_proc~~dprep~~CallsGraph_node3"><a xlink:href="../proc/dprep.html#proc-wrapup500" xlink:title="wrapup500">
+<polygon fill="#d9534f" stroke="#d9534f" points="163,-276 90,-276 90,-252 163,-252 163,-276"/>
+<text text-anchor="middle" x="126.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">wrapup500</text>
+</a>
+</g>
+</g>
+<!-- proc~dprep&#45;&gt;none~wrapup500 -->
+<g id="proc~~dprep~~CallsGraph_edge2" class="edge">
+<title>proc~dprep&#45;&gt;none~wrapup500</title>
+<path fill="none" stroke="#000000" d="M34.75,-171.03C44.97,-188.49 65.79,-221.13 90,-243 91.13,-244.02 92.32,-245.02 93.54,-245.98"/>
+<polygon fill="#000000" stroke="#000000" points="91.83,-249.06 102.03,-251.94 95.85,-243.33 91.83,-249.06"/>
+</g>
+<!-- none~wrapup600 -->
+<g id="proc~~dprep~~CallsGraph_node4" class="node">
+<title>none~wrapup600</title>
+<g id="a_proc~~dprep~~CallsGraph_node4"><a xlink:href="../proc/dprep.html#proc-wrapup600" xlink:title="wrapup600">
+<polygon fill="#d9534f" stroke="#d9534f" points="163,-234 90,-234 90,-210 163,-210 163,-234"/>
+<text text-anchor="middle" x="126.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">wrapup600</text>
+</a>
+</g>
+</g>
+<!-- proc~dprep&#45;&gt;none~wrapup600 -->
+<g id="proc~~dprep~~CallsGraph_edge3" class="edge">
+<title>proc~dprep&#45;&gt;none~wrapup600</title>
+<path fill="none" stroke="#000000" d="M45.18,-171.05C57.52,-179.61 74.63,-191.26 90,-201 91.92,-202.21 93.9,-203.45 95.91,-204.68"/>
+<polygon fill="#000000" stroke="#000000" points="94.35,-207.83 104.72,-210 97.97,-201.83 94.35,-207.83"/>
+</g>
+<!-- none~wrapup700 -->
+<g id="proc~~dprep~~CallsGraph_node5" class="node">
+<title>none~wrapup700</title>
+<g id="a_proc~~dprep~~CallsGraph_node5"><a xlink:href="../proc/dprep.html#proc-wrapup700" xlink:title="wrapup700">
+<polygon fill="#d9534f" stroke="#d9534f" points="163,-192 90,-192 90,-168 163,-168 163,-192"/>
+<text text-anchor="middle" x="126.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">wrapup700</text>
+</a>
+</g>
+</g>
+<!-- proc~dprep&#45;&gt;none~wrapup700 -->
+<g id="proc~~dprep~~CallsGraph_edge4" class="edge">
+<title>proc~dprep&#45;&gt;none~wrapup700</title>
+<path fill="none" stroke="#000000" d="M54.13,-164.63C62.08,-166.34 71.06,-168.27 79.9,-170.18"/>
+<polygon fill="#000000" stroke="#000000" points="79.25,-173.62 89.77,-172.3 80.73,-166.78 79.25,-173.62"/>
+</g>
+<!-- proc~adjlr -->
+<g id="proc~~dprep~~CallsGraph_node6" class="node">
+<title>proc~adjlr</title>
+<g id="a_proc~~dprep~~CallsGraph_node6"><a xlink:href="../proc/adjlr.html" xlink:title="adjlr">
+<polygon fill="#d9534f" stroke="#d9534f" points="153.5,-150 99.5,-150 99.5,-126 153.5,-126 153.5,-150"/>
+<text text-anchor="middle" x="126.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">adjlr</text>
+</a>
+</g>
+</g>
+<!-- proc~dprep&#45;&gt;proc~adjlr -->
+<g id="proc~~dprep~~CallsGraph_edge5" class="edge">
+<title>proc~dprep&#45;&gt;proc~adjlr</title>
+<path fill="none" stroke="#000000" d="M54.13,-153.37C64.95,-151.04 77.68,-148.3 89.37,-145.78"/>
+<polygon fill="#000000" stroke="#000000" points="90.26,-149.17 99.3,-143.64 88.79,-142.33 90.26,-149.17"/>
+</g>
+<!-- proc~cdrv -->
+<g id="proc~~dprep~~CallsGraph_node7" class="node">
+<title>proc~cdrv</title>
+<g id="a_proc~~dprep~~CallsGraph_node7"><a xlink:href="../proc/cdrv.html" xlink:title="cdrv">
+<polygon fill="#d9534f" stroke="#d9534f" points="153.5,-108 99.5,-108 99.5,-84 153.5,-84 153.5,-108"/>
+<text text-anchor="middle" x="126.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">cdrv</text>
+</a>
+</g>
+</g>
+<!-- proc~dprep&#45;&gt;proc~cdrv -->
+<g id="proc~~dprep~~CallsGraph_edge6" class="edge">
+<title>proc~dprep&#45;&gt;proc~cdrv</title>
+<path fill="none" stroke="#000000" d="M45.18,-146.95C57.52,-138.39 74.63,-126.74 90,-117 91.92,-115.79 93.9,-114.55 95.91,-113.32"/>
+<polygon fill="#000000" stroke="#000000" points="97.97,-116.17 104.72,-108 94.35,-110.17 97.97,-116.17"/>
+</g>
+<!-- proc~jgroup -->
+<g id="proc~~dprep~~CallsGraph_node8" class="node">
+<title>proc~jgroup</title>
+<g id="a_proc~~dprep~~CallsGraph_node8"><a xlink:href="../proc/jgroup.html" xlink:title="jgroup">
+<polygon fill="#d9534f" stroke="#d9534f" points="153.5,-66 99.5,-66 99.5,-42 153.5,-42 153.5,-66"/>
+<text text-anchor="middle" x="126.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">jgroup</text>
+</a>
+</g>
+</g>
+<!-- proc~dprep&#45;&gt;proc~jgroup -->
+<g id="proc~~dprep~~CallsGraph_edge7" class="edge">
+<title>proc~dprep&#45;&gt;proc~jgroup</title>
+<path fill="none" stroke="#000000" d="M34.75,-146.97C44.97,-129.51 65.79,-96.87 90,-75 91.13,-73.98 92.32,-72.98 93.54,-72.02"/>
+<polygon fill="#000000" stroke="#000000" points="95.85,-74.67 102.03,-66.06 91.83,-68.94 95.85,-74.67"/>
+</g>
+<!-- proc~odrv -->
+<g id="proc~~dprep~~CallsGraph_node9" class="node">
+<title>proc~odrv</title>
+<g id="a_proc~~dprep~~CallsGraph_node9"><a xlink:href="../proc/odrv.html" xlink:title="odrv">
+<polygon fill="#d9534f" stroke="#d9534f" points="153.5,-24 99.5,-24 99.5,0 153.5,0 153.5,-24"/>
+<text text-anchor="middle" x="126.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">odrv</text>
+</a>
+</g>
+</g>
+<!-- proc~dprep&#45;&gt;proc~odrv -->
+<g id="proc~~dprep~~CallsGraph_edge8" class="edge">
+<title>proc~dprep&#45;&gt;proc~odrv</title>
+<path fill="none" stroke="#000000" d="M31.38,-146.89C38.63,-122.73 57.7,-67.88 90,-33 90.88,-32.05 91.8,-31.14 92.77,-30.25"/>
+<polygon fill="#000000" stroke="#000000" points="95.03,-32.93 100.8,-24.04 90.75,-27.39 95.03,-32.93"/>
+</g>
+<!-- proc~cntnzu -->
+<g id="proc~~dprep~~CallsGraph_node10" class="node">
+<title>proc~cntnzu</title>
+<g id="a_proc~~dprep~~CallsGraph_node10"><a xlink:href="../proc/cntnzu.html" xlink:title="cntnzu">
+<polygon fill="#d9534f" stroke="#d9534f" points="253,-234 199,-234 199,-210 253,-210 253,-234"/>
+<text text-anchor="middle" x="226" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">cntnzu</text>
+</a>
+</g>
+</g>
+<!-- none~wrapup600&#45;&gt;proc~cntnzu -->
+<g id="proc~~dprep~~CallsGraph_edge9" class="edge">
+<title>none~wrapup600&#45;&gt;proc~cntnzu</title>
+<path fill="none" stroke="#000000" d="M163.25,-222C171.51,-222 180.3,-222 188.58,-222"/>
+<polygon fill="#000000" stroke="#000000" points="188.72,-225.5 198.72,-222 188.72,-218.5 188.72,-225.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    <section>    
+      <h2>Variables</h2>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dp~3"></span>
+              integer,
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>dp</strong></td>
+<td> =</td>
+                <td>kind(0.0d0)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dq"></span>
+              real(kind=dp),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dq</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dyj"></span>
+              real(kind=dp),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dyj</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-erwt"></span>
+              real(kind=dp),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>erwt</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fac~9"></span>
+              real(kind=dp),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fac</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-i~63"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>i</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ibr"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ibr</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ier~16"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ier</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ipil"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ipil</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ipiu"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ipiu</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iptt1"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iptt1</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iptt2"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iptt2</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-j~32"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>j</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-jfound"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>jfound</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-k~26"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>k</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kmax~6"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kmax</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kmin~5"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kmin</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-knew"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>knew</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ldif"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ldif</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-lenigp"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>lenigp</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-liwk"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>liwk</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxg"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxg</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-np1~4"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>np1</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nzsut"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nzsut</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-yj~4"></span>
+              real(kind=dp),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>yj</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    </section>
+    <br>
+    
+    
+
+    
+    
+
+
+    <section>
+    <h2>Subroutines</h2>
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-wrapup400"></span> <h3> subroutine <a href='dprep.html#proc-wrapup400'>wrapup400</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-wrapup500"></span> <h3> subroutine <a href='dprep.html#proc-wrapup500'>wrapup500</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-wrapup600"></span> <h3> subroutine <a href='dprep.html#proc-wrapup600'>wrapup600</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-wrapup700"></span> <h3> subroutine <a href='dprep.html#proc-wrapup700'>wrapup700</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+    </section>    
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              odepack
+ was developed by Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams<br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2025-12-19 11:47 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

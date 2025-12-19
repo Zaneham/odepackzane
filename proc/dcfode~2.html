@@ -1,0 +1,697 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="ODEPACK - A Systematized Collection of ODE Solvers">
+    <meta name="author" content="Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>dcfode &ndash; odepack</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+      <link href="../css/user.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">odepack </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>dcfode
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.3% of total for procedures.">72 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/dcfode.inc"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/dcfode.inc.html'>dcfode.inc</a></li>
+            <li class="breadcrumb-item active" aria-current="page">dcfode</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../proc/dcfode~2.html#variable-agamq~2">agamq</a>
+            <a class="list-group-item" href="../proc/dcfode~2.html#variable-fnq~2">fnq</a>
+            <a class="list-group-item" href="../proc/dcfode~2.html#variable-fnqm1~2">fnqm1</a>
+            <a class="list-group-item" href="../proc/dcfode~2.html#variable-i~110">i</a>
+            <a class="list-group-item" href="../proc/dcfode~2.html#variable-ib~2">ib</a>
+            <a class="list-group-item" href="../proc/dcfode~2.html#variable-nq~3">nq</a>
+            <a class="list-group-item" href="../proc/dcfode~2.html#variable-nqm1~4">nqm1</a>
+            <a class="list-group-item" href="../proc/dcfode~2.html#variable-nqp1~2">nqp1</a>
+            <a class="list-group-item" href="../proc/dcfode~2.html#variable-pc~2">pc</a>
+            <a class="list-group-item" href="../proc/dcfode~2.html#variable-pint~2">pint</a>
+            <a class="list-group-item" href="../proc/dcfode~2.html#variable-ragq~2">ragq</a>
+            <a class="list-group-item" href="../proc/dcfode~2.html#variable-rq1fac~2">rq1fac</a>
+            <a class="list-group-item" href="../proc/dcfode~2.html#variable-rqfac~2">rqfac</a>
+            <a class="list-group-item" href="../proc/dcfode~2.html#variable-tsign~2">tsign</a>
+            <a class="list-group-item" href="../proc/dcfode~2.html#variable-xpin~2">xpin</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/dcfode~2.html#src">dcfode</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2> subroutine dcfode(meth, elco, tesco)  
+</h2>
+    
+
+    <h3 id="name">NAME</h3>
+<p>dcfode(3f) - [M_odepack] Set ODE integrator coefficients.</p>
+<h3 id="synopsis">SYNOPSIS</h3>
+<div class="codehilite"><pre><span></span><code>     subroutine dcfode (meth, elco, tesco)
+     integer          :: meth
+     double precision :: elco(13,12)
+     double precision :: tesco(3,12)
+</code></pre></div>
+
+<h3 id="description">DESCRIPTION</h3>
+<p>DCFODE is called by the integrator routine to set coefficients
+   needed there.</p>
+<p>DCFODE is called once at the beginning of the problem,
+   and is not called again unless and until METH is changed.</p>
+<h3 id="options">OPTIONS</h3>
+<dl>
+<dt>METH</dt>
+<dd>
+<p>The coefficients for the current method, as
+   given by the value of METH, are set for all orders and saved.
+   The maximum order assumed here is 12 if METH = 1 and 5 if METH = 2.
+   (A smaller value of the maximum order is also allowed.)</p>
+</dd>
+<dt>ELCO</dt>
+<dd>
+<p>The ELCO array contains the basic method coefficients.
+   The coefficients el(i), 1 .le. i .le. nq+1, for the method of
+   order nq are stored in ELCO(i,nq).  They are given by a genetrating
+   polynomial, i.e.,
+       l(x) = el(1) + el(2)<em>x + &hellip; + el(nq+1)</em>x<em><em>nq.
+   For the implicit Adams methods, l(x) is given by
+       dl/dx = (x+1)</em>(x+2)</em>&hellip;<em>(x+nq-1)/factorial(nq-1),    l(-1) = 0.
+   For the BDF methods, l(x) is given by
+       l(x) = (x+1)</em>(x+2)<em> &hellip; </em>(x+nq)/K,
+   where
+       K = factorial(nq)*(1 + 1/2 + &hellip; + 1/nq).</p>
+</dd>
+<dt>TESCO</dt>
+<dd>
+<p>The TESCO array contains test constants used for the
+   local error test and the selection of step size and/or order.
+   At order nq, TESCO(k,nq) is used for the selection of step
+   size at order nq - 1 if k = 1, at order nq if k = 2, and at order
+   nq + 1 if k = 3.</p>
+</dd>
+</dl>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-meth~3"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>meth</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elco~3"></span>
+              real(kind=dp),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>elco</strong>(13,12)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tesco~3"></span>
+              real(kind=dp),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tesco</strong>(3,12)</td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+
+
+    <section>    
+      <h2>Variables</h2>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-agamq~2"></span>
+              double precision,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>agamq</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fnq~2"></span>
+              double precision,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fnq</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fnqm1~2"></span>
+              double precision,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fnqm1</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-i~110"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>i</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ib~2"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ib</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nq~3"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nq</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nqm1~4"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nqm1</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nqp1~2"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nqp1</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pc~2"></span>
+              double precision,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pc</strong>(12)</td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pint~2"></span>
+              double precision,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pint</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ragq~2"></span>
+              double precision,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ragq</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rq1fac~2"></span>
+              double precision,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rq1fac</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rqfac~2"></span>
+              double precision,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rqfac</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tsign~2"></span>
+              double precision,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tsign</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-xpin~2"></span>
+              double precision,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xpin</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    </section>
+    <br>
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="k">subroutine </span><span class="n">dcfode</span><span class="w"> </span><span class="p">(</span><span class="n">meth</span><span class="p">,</span><span class="w"> </span><span class="n">elco</span><span class="p">,</span><span class="w"> </span><span class="n">tesco</span><span class="p">)</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">meth</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">elco</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">tesco</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="kt">integer</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">ib</span><span class="p">,</span><span class="w"> </span><span class="n">nq</span><span class="p">,</span><span class="w"> </span><span class="n">nqm1</span><span class="p">,</span><span class="w"> </span><span class="n">nqp1</span>
+<span class="kt">double precision</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">agamq</span><span class="p">,</span><span class="w"> </span><span class="n">fnq</span><span class="p">,</span><span class="w"> </span><span class="n">fnqm1</span><span class="p">,</span><span class="w"> </span><span class="n">pc</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span><span class="w"> </span><span class="n">pint</span><span class="p">,</span><span class="w"> </span><span class="n">ragq</span><span class="p">,</span><span class="w"> </span><span class="n">rqfac</span><span class="p">,</span><span class="w"> </span><span class="n">rq1fac</span><span class="p">,</span><span class="w"> </span><span class="n">tsign</span><span class="p">,</span><span class="w"> </span><span class="n">xpin</span>
+
+<span class="w">   </span><span class="k">select case</span><span class="p">(</span><span class="n">meth</span><span class="p">)</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">      </span><span class="n">elco</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0d0</span>
+<span class="w">      </span><span class="n">elco</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0d0</span>
+<span class="w">      </span><span class="n">tesco</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0d0</span>
+<span class="w">      </span><span class="n">tesco</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0d0</span>
+<span class="w">      </span><span class="n">tesco</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0d0</span>
+<span class="w">      </span><span class="n">tesco</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0d0</span>
+<span class="w">      </span><span class="n">pc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0d0</span>
+<span class="w">      </span><span class="n">rqfac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0d0</span>
+<span class="w">      </span><span class="k">do </span><span class="n">nq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">12</span>
+<span class="w">         </span><span class="c">!-----------------------------------------------------------------------</span>
+<span class="w">         </span><span class="c">! The PC array will contain the coefficients of the polynomial</span>
+<span class="w">         </span><span class="c">!     p(x) = (x+1)*(x+2)*...*(x+nq-1).</span>
+<span class="w">         </span><span class="c">! Initially, p(x) = 1.</span>
+<span class="w">         </span><span class="c">!-----------------------------------------------------------------------</span>
+<span class="w">         </span><span class="n">rq1fac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rqfac</span>
+<span class="w">         </span><span class="n">rqfac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rqfac</span><span class="o">/</span><span class="n">nq</span>
+<span class="w">         </span><span class="n">nqm1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nq</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">         </span><span class="n">fnqm1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nqm1</span>
+<span class="w">         </span><span class="n">nqp1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nq</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">         </span><span class="c">! Form coefficients of p(x)*(x+nq-1). ----------------------------------</span>
+<span class="w">         </span><span class="n">pc</span><span class="p">(</span><span class="n">nq</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0d0</span>
+<span class="w">         </span><span class="k">do </span><span class="n">ib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="n">nqm1</span>
+<span class="w">           </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nqp1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ib</span>
+<span class="w">           </span><span class="n">pc</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pc</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fnqm1</span><span class="o">*</span><span class="n">pc</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">         </span><span class="k">enddo</span>
+<span class="k">         </span><span class="n">pc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fnqm1</span><span class="o">*</span><span class="n">pc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">         </span><span class="c">! Compute integral, -1 to 0, of p(x) and x*p(x). -----------------------</span>
+<span class="w">         </span><span class="n">pint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">         </span><span class="n">xpin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0d0</span>
+<span class="w">         </span><span class="n">tsign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0d0</span>
+<span class="w">         </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="n">nq</span>
+<span class="w">           </span><span class="n">tsign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">tsign</span>
+<span class="w">           </span><span class="n">pint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pint</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tsign</span><span class="o">*</span><span class="n">pc</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">/</span><span class="n">i</span>
+<span class="w">           </span><span class="n">xpin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xpin</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tsign</span><span class="o">*</span><span class="n">pc</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">         </span><span class="k">enddo</span>
+<span class="w">         </span><span class="c">! Store coefficients in ELCO and TESCO. --------------------------------</span>
+<span class="w">         </span><span class="n">elco</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nq</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pint</span><span class="o">*</span><span class="n">rq1fac</span>
+<span class="w">         </span><span class="n">elco</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">nq</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0d0</span>
+<span class="w">         </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="n">nq</span>
+<span class="w">           </span><span class="n">elco</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">nq</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rq1fac</span><span class="o">*</span><span class="n">pc</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">/</span><span class="n">i</span>
+<span class="w">         </span><span class="k">enddo</span>
+<span class="k">         </span><span class="n">agamq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rqfac</span><span class="o">*</span><span class="n">xpin</span>
+<span class="w">         </span><span class="n">ragq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0d0</span><span class="o">/</span><span class="n">agamq</span>
+<span class="w">         </span><span class="n">tesco</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">nq</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ragq</span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nq</span><span class="w"> </span><span class="p">.</span><span class="n">lt</span><span class="p">.</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="n">tesco</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nqp1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ragq</span><span class="o">*</span><span class="n">rqfac</span><span class="o">/</span><span class="n">nqp1</span>
+<span class="w">         </span><span class="n">tesco</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">nqm1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ragq</span>
+<span class="w">      </span><span class="k">enddo</span>
+
+<span class="k">   case</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">      </span><span class="n">pc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0d0</span>
+<span class="w">      </span><span class="n">rq1fac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0d0</span>
+<span class="w">      </span><span class="k">do </span><span class="n">nq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span>
+<span class="w">         </span><span class="c">!-----------------------------------------------------------------------</span>
+<span class="w">         </span><span class="c">! The PC array will contain the coefficients of the polynomial</span>
+<span class="w">         </span><span class="c">!     p(x) = (x+1)*(x+2)*...*(x+nq).</span>
+<span class="w">         </span><span class="c">! Initially, p(x) = 1.</span>
+<span class="w">         </span><span class="c">!-----------------------------------------------------------------------</span>
+<span class="w">         </span><span class="n">fnq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nq</span>
+<span class="w">         </span><span class="n">nqp1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nq</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">         </span><span class="c">! Form coefficients of p(x)*(x+nq). ------------------------------------</span>
+<span class="w">         </span><span class="n">pc</span><span class="p">(</span><span class="n">nqp1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0d0</span>
+<span class="w">         </span><span class="k">do </span><span class="n">ib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="n">nq</span>
+<span class="w">            </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nq</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ib</span>
+<span class="w">            </span><span class="n">pc</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pc</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fnq</span><span class="o">*</span><span class="n">pc</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">         </span><span class="k">enddo</span>
+<span class="k">         </span><span class="n">pc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fnq</span><span class="o">*</span><span class="n">pc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">         </span><span class="c">! Store coefficients in ELCO and TESCO. --------------------------------</span>
+<span class="w">         </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="n">nqp1</span>
+<span class="w">            </span><span class="n">elco</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">nq</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pc</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">/</span><span class="n">pc</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">         </span><span class="k">enddo</span>
+<span class="k">         </span><span class="n">elco</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">nq</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0d0</span>
+<span class="w">         </span><span class="n">tesco</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nq</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rq1fac</span>
+<span class="w">         </span><span class="n">tesco</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">nq</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nqp1</span><span class="o">/</span><span class="n">elco</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nq</span><span class="p">)</span>
+<span class="w">         </span><span class="n">tesco</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">nq</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">nq</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">elco</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nq</span><span class="p">)</span>
+<span class="w">         </span><span class="n">rq1fac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rq1fac</span><span class="o">/</span><span class="n">fnq</span>
+<span class="w">      </span><span class="k">enddo</span>
+<span class="k">    case </span><span class="n">default</span>
+<span class="w">       </span><span class="k">stop</span><span class="w"> </span><span class="s1">&#39;*dcfode* unknown value for meth&#39;</span>
+<span class="w">    </span><span class="k">end select</span>
+<span class="k">end subroutine </span><span class="n">dcfode</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              odepack
+ was developed by Alan C. Hindmarsh as modified by John S. Urban, Jacob Williams<br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2025-12-19 11:47 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>
