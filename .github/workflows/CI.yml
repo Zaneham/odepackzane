@@ -2,7 +2,7 @@ name: CI
 on: [push, pull_request]
 jobs:
 
-  # ARM Testing - Apple Silicon (M1/M2/M3)
+  # ARM Testing - Apple Silicon
   Build-ARM:
     runs-on: macos-14
     steps:
@@ -11,98 +11,70 @@ jobs:
       with:
         submodules: recursive
 
-    - name: Install GFortran via Homebrew
+    - name: Setup environment
       run: |
-        brew install gcc
-        echo "FC=$(brew --prefix)/bin/gfortran-14" >> $GITHUB_ENV
-        $(brew --prefix)/bin/gfortran-14 --version
+        brew install gcc fpm
+        which gfortran-14 || ls /opt/homebrew/bin/gfortran*
 
-    - name: Setup Fortran Package Manager
+    - name: Compile and Test (ARM64)
       run: |
-        brew install fpm
-        fpm --version
+        export FC=gfortran-14
+        fpm build --flag "-std=legacy -fallow-argument-mismatch"
+        fpm test --flag "-std=legacy -fallow-argument-mismatch"
 
-    - name: Compile (ARM64)
-      run: fpm build --compiler $(brew --prefix)/bin/gfortran-14
-
-    - name: Test (ARM64)
-      run: fpm test --compiler $(brew --prefix)/bin/gfortran-14
-
-  # RISC-V Testing via QEMU emulation
+  # RISC-V Testing via QEMU
   Build-RISCV:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
         submodules: recursive
 
-    - name: Install QEMU and RISC-V toolchain
+    - name: Install toolchain
       run: |
         sudo apt-get update
-        sudo apt-get install -y qemu-user-static gcc-riscv64-linux-gnu gfortran-riscv64-linux-gnu
+        sudo apt-get install -y qemu-user-static gfortran-12-riscv64-linux-gnu
+        sudo update-alternatives --install /usr/bin/riscv64-linux-gnu-gfortran riscv64-linux-gnu-gfortran /usr/bin/riscv64-linux-gnu-gfortran-12 100
 
-    - name: Setup Fortran Package Manager
+    - name: Setup fpm
       run: |
-        wget https://github.com/fortran-lang/fpm/releases/download/v0.10.0/fpm-0.10.0-linux-x86_64 -O fpm
+        wget -q https://github.com/fortran-lang/fpm/releases/download/v0.6.0/fpm-0.6.0-linux-x86_64 -O fpm
         chmod +x fpm
         sudo mv fpm /usr/local/bin/
-        fpm --version
 
-    - name: Compile (RISC-V 64-bit)
-      run: fpm build --compiler riscv64-linux-gnu-gfortran --flag "-static"
+    - name: Compile and Test (RISC-V)
+      run: |
+        export FC=riscv64-linux-gnu-gfortran
+        fpm build --flag "-std=legacy -fallow-argument-mismatch -static"
+        fpm test --flag "-std=legacy -fallow-argument-mismatch -static" --runner qemu-riscv64-static
 
-    - name: Test (RISC-V via QEMU)
-      run: fpm test --compiler riscv64-linux-gnu-gfortran --flag "-static" --runner "qemu-riscv64-static"
-
-  # x86_64 Linux build with documentation
+  # x86_64 Linux
   Build:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        gcc_v: [10]
-        python-version: [3.9]
-    env:
-      FC: gfortran-${{ matrix.gcc_v }}
-      GCC_V: ${{ matrix.gcc_v }}
-
+    runs-on: ubuntu-22.04
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
         submodules: recursive
 
-    - name: Install Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-version }}
-
-    - name: Setup Graphviz
-      uses: ts-graphviz/setup-graphviz@v2
-
-    - name: Setup Fortran Package Manager
+    - name: Install dependencies
       run: |
-        wget https://github.com/fortran-lang/fpm/releases/download/v0.10.0/fpm-0.10.0-linux-x86_64 -O fpm
-        chmod +x fpm
-        sudo mv fpm /usr/local/bin/
-        fpm --version
-
-    - name: Install Python dependencies
-      run: |
-        python -m pip install --upgrade pip
+        sudo apt-get update
+        sudo apt-get install -y gfortran-10 python3-pip graphviz
         pip install ford numpy matplotlib
 
-    - name: Install GFortran
+    - name: Setup fpm
       run: |
-        sudo apt-get update
-        sudo apt-get install -y gfortran-${GCC_V}
+        wget -q https://github.com/fortran-lang/fpm/releases/download/v0.6.0/fpm-0.6.0-linux-x86_64 -O fpm
+        chmod +x fpm
+        sudo mv fpm /usr/local/bin/
 
-    - name: Compile
-      run: fpm build --compiler gfortran-${GCC_V}
-
-    - name: Test
-      run: fpm test --compiler gfortran-${GCC_V}
+    - name: Compile and Test
+      run: |
+        export FC=gfortran-10
+        fpm build --flag "-std=legacy -fallow-argument-mismatch"
+        fpm test --flag "-std=legacy -fallow-argument-mismatch"
 
     - name: Build documentation
       run: ford ./ford.md

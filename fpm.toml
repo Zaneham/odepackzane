@@ -1,4 +1,3 @@
-# TOML file for fpm as described at https://fpm.fortran-lang.org/en/spec/manifest.html
 name = "M_odepack"
 version = "0.1.0"
 license = "Public Domain"
@@ -10,16 +9,6 @@ description = "differential equation solver"
 categories = ["ODE", "fortran"]
 
 [build]
-#auto-executables = true
-#auto-tests = true
-#auto-examples = true
 auto-executables = false
 
 [install]
-#library = false
-
-[profiles.release.fortran]
-flags = "-std=legacy -fallow-argument-mismatch"
-
-[profiles.debug.fortran]
-flags = "-std=legacy -fallow-argument-mismatch"
