@@ -17,3 +17,9 @@ auto-executables = false
 
 [install]
 #library = false
+
+[profiles.release.fortran]
+flags = "-std=legacy -fallow-argument-mismatch"
+
+[profiles.debug.fortran]
+flags = "-std=legacy -fallow-argument-mismatch"
